@@ -1,0 +1,13 @@
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+
+    .layout-main {
+        flex: 1 1 0;
+        margin-left: 65px;
+        padding: 80px 10px 0px 10px;
+        @include transition(margin-left .3s);
+    }
+}

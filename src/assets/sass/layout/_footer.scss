@@ -1,0 +1,21 @@
+.layout-wrapper {
+    .footer {
+        margin-left: 65px;
+        padding: .5em;
+        @include transition(margin-left .3s);
+
+        .footer-text-left {
+            float: left;
+        }
+
+        .footer-text-right {
+            color: $textSecondaryColor;
+            float: right;
+
+            span {
+                vertical-align: middle;
+                display: inline-block;
+            }
+        }
+    }
+}

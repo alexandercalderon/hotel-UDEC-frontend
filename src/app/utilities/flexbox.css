@@ -1,0 +1,30 @@
+:host ::ng-deep .flexbox-demo pre[class*=language-] {
+  box-shadow: none;
+  border: 0 none;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-]:before, :host ::ng-deep .flexbox-demo pre[class*=language-]:after {
+  display: none !important;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code {
+  border-left: 10px solid var(--surface-d) !important;
+  box-shadow: none !important;
+  background: var(--surface-e) !important;
+  margin: 1em 0;
+  color: var(--text-color);
+  font-size: 14px;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code .token.tag, :host ::ng-deep .flexbox-demo pre[class*=language-] code .token.keyword {
+  color: #2196F3 !important;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code .token.attr-name, :host ::ng-deep .flexbox-demo pre[class*=language-] code .token.attr-string {
+  color: #2196F3 !important;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code .token.attr-value {
+  color: #4CAF50 !important;
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code .token.punctuation {
+  color: var(--text-color);
+}
+:host ::ng-deep .flexbox-demo pre[class*=language-] code .token.operator, :host ::ng-deep .flexbox-demo pre[class*=language-] code .token.string {
+  background: transparent;
+}

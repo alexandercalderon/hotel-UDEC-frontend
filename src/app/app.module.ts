@@ -131,6 +131,9 @@ import {NodeService} from './demo/service/nodeservice';
 import {PhotoService} from './demo/service/photoservice';
 import {ProductService} from './demo/service/productservice';
 import {MenuService} from './app.menu.service';
+import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
+import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
+import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.component';
 
 @NgModule({
     imports: [
@@ -255,6 +258,9 @@ import {MenuService} from './app.menu.service';
         AppNotfoundComponent,
         AppErrorComponent,
         AppAccessdeniedComponent,
+        OcupacionComponent,
+        CheckInComponent,
+        CheckOutComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

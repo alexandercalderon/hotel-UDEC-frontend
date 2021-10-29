@@ -35,6 +35,8 @@ import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
+import Component from '@fullcalendar/core/component/Component';
+import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 
 @NgModule({
     imports: [
@@ -78,6 +80,7 @@ import {AppHelpComponent} from './pages/app.help.component';
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'login', component: AppLoginComponent},
+            {path: 'ocupacion',component: OcupacionComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

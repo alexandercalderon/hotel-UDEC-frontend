@@ -1,0 +1,17 @@
+<div class="layout-wrapper" [ngClass]="{'layout-wrapper-menu-active':sidebarActive,
+                                        'layout-overlay-menu':overlay, 'p-ripple-disabled': !ripple, 'p-input-filled': inputStyle === 'filled'}">
+
+    <app-topbar></app-topbar>
+
+    <app-sidebar></app-sidebar>
+
+    <div class="layout-main">
+        <div class="layout-main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <app-config></app-config>
+
+    <app-footer></app-footer>
+
+</div>

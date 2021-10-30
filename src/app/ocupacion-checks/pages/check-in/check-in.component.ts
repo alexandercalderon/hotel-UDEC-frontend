@@ -9,6 +9,8 @@ export class CheckInComponent implements OnInit {
 
   constructor() { }
 
+  private nombre: String;
+
   ngOnInit(): void {
   }
 

@@ -7,8 +7,11 @@
     <body class="subtitulos">
         <div class="p-fluid">
             <div class="p-field">
-                <label for="nombres">Cedula:</label>
-                <input id="nombres" type="text" pInputText> 
+                <label for="cedula">Cedula:</label>
+                <input name="cedula" [(ngModel)]="plantillaUsuario.cedula" type="text"> 
+            </div>
+            <div class="buttonguardar" id="botonguardar">
+                <button (click)="cargarUsuario()" >Cargar</button>
             </div>
         </div>
         <h2>
@@ -17,49 +20,49 @@
         <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
                 <label for="fechadeingreso">Fecha de ingreso:</label>
-                <input id="fechadeingreso" type="text" pInputText> 
+                <input name="fechadeingreso" [(ngModel)]="checkIn.fechaIngreso" type="text"> 
                 <label for="diashospedados">Dias hospedados:</label>
-                <input id="diashospedados" type="text" pInputText> 
+                <input name="diashospedados" [(ngModel)]="checkIn.numeroDias" type="text"> 
                 <label for="fechadeegreso">Fecha de egreso:</label>
-                <input id="fechadeegreso" type="text" pInputText> 
+                <input name="fechadeegreso" [(ngModel)]="checkIn.fechaSalida" type="text"> 
             </div>
         </div>
         <h2>Datos del huesped</h2> 
         <div class="p-fluid">
             <div class="p-field">
-                <label for="nombres">Nombres:</label>
-                <input id="nombres" type="text" pInputText> 
+                <label for="nombre">Nombre:</label>
+                <input name="nombre" [(ngModel)]="checkIn.usuario.nombre" type="text"> 
             </div>
             <div class="p-field">
-                <label for="apellidos">Apellidos:</label>
-                <input id="apellidos" type="text" pInputText> 
+                <label for="apellido">Apellido:</label>
+                <input name="apellido" [(ngModel)]="checkIn.usuario.apellido" type="text"> 
             </div>
             <div class="p-field">
                 <label for="ciudad">Ciudad:</label>
-                <input id="ciudad" type="text" pInputText> 
+                <input name="ciudad" [(ngModel)]="checkIn.usuario.ciudad" type="text"> 
             </div>
             <div class="p-field">
                 <label for="direccion">Direccion:</label>
-                <input id="direccion" type="text" pInputText> 
+                <input name="direccion" [(ngModel)]="checkIn.usuario.direccion" type="text"> 
             </div>
             <div class="p-field">
                 <label for="email">E-mail:</label>
-                <input id="email" type="text" pInputText> 
+                <input name="email" [(ngModel)]="checkIn.usuario.email" type="text"> 
             </div>
             <div class="p-field">
                 <label for="celular">Celular:</label>
-                <input id="celular" type="text" pInputText> 
+                <input name="celular" [(ngModel)]="checkIn.usuario.telefono" type="text"> 
             </div>
         </div>
         <h2>Datos de la reservacion</h2> 
         <div class="p-fluid">
             <div class="p-field">
-                <label for="nodehabitaciones">Numero de habitaciones:</label>
-                <input id="nodehabitaciones" type="text" pInputText> 
+                <label for="habitaciones">Numero de habitaciones:</label>
+                <input name="habitaciones" [(ngModel)]="checkIn.usuario.habitaciones[0].numeroHabitacion" type="text"> 
             </div>
             <div class="p-field">
                 <label for="tarifa">Tarifa total:</label>
-                <input id="tarifa" type="text" pInputText> 
+                <input name="tarifa" [(ngModel)]="checkIn.usuario.habitaciones[0].tarifa" type="text"> 
             </div>
         </div>
         <div class="buttoncancelar">

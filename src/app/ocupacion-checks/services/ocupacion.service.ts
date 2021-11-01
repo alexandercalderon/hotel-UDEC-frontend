@@ -22,4 +22,8 @@ export class OcupacionService {
   public update(estado: string, id_tipo: number, id_habitacion: number): Observable<TipoHabitacion>{
     return this.http.put<TipoHabitacion>(this.endPoint+"/update/"+estado+"/"+id_tipo+"/"+id_habitacion, null, {headers: this.header});
   }
+
+  public filtrar(estado: String): Observable<TipoHabitacion[]>{
+    return this.http.get<TipoHabitacion[]>(this.endPoint+"/filtrar/"+estado);
+  }
 }

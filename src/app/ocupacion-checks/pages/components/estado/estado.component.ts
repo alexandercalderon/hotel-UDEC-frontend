@@ -5,9 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './estado.component.html',
   styleUrls: ['./estado.component.scss']
 })
-export class EstadoComponent{
+export class EstadoComponent {
 
-  @Input() estado: string
+  @Input() estado: string;
+  constructor() { }
+
 
 
 }

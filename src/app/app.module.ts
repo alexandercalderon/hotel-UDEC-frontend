@@ -135,7 +135,8 @@ import {MenuService} from './app.menu.service';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
 import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.component';
-import { EstadoComponent } from './ocupacion-checks/pages/estado/estado.component';
+import {EstadoComponent} from './ocupacion-checks/pages/components/estado/estado.component'
+import { HabitacionesComponent } from './ocupacion-checks/pages/components/habitaciones/habitaciones.component';
 
 @NgModule({
     imports: [
@@ -264,6 +265,7 @@ import { EstadoComponent } from './ocupacion-checks/pages/estado/estado.componen
         CheckInComponent,
         CheckOutComponent,
         EstadoComponent,
+        HabitacionesComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

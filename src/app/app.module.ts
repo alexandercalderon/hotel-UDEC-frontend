@@ -93,6 +93,7 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
+import { CheckService } from './ocupacion-checks/pages/check-in/check.service';
 
 // Demo pages
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
@@ -267,7 +268,7 @@ import { EstadoComponent } from './ocupacion-checks/pages/estado/estado.componen
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService
+        PhotoService, ProductService, MenuService, CheckService
     ],
     bootstrap: [AppComponent]
 })

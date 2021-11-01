@@ -37,6 +37,7 @@ import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import Component from '@fullcalendar/core/component/Component';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
+import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
 
 @NgModule({
     imports: [
@@ -73,7 +74,8 @@ import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
-                    {path: 'documentation', component: DocumentationComponent}
+                    {path: 'documentation', component: DocumentationComponent},
+                    {path: 'check-in', component: CheckInComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},

@@ -1,0 +1,4 @@
+<p-message *ngIf="estado=='Limpieza'" severity="info" text="{{estado}}" styleClass="p-mr-2"></p-message>                                
+<p-message *ngIf="estado=='Reservado'" severity="warn" text="{{estado}}" styleClass="p-mr-2"></p-message>
+<p-message *ngIf="estado=='Disponible'" severity="success" text="{{estado}}" styleClass="p-mr-2"></p-message>
+<p-message *ngIf="estado=='Ocupado'" severity="error" text="{{estado}}" styleClass="p-mr-2"></p-message>

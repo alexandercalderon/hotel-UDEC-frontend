@@ -1,5 +1,5 @@
-export class PlantillaUsuario {
+export interface PlantillaUsuario {
 
-    public cedula:string;
+    cedula:string;
 
 }

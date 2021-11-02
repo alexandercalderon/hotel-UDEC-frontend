@@ -14,5 +14,9 @@ export class CheckInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  desactivar = true;
+
+  onEnter(desactivar: boolean) { desactivar = true; }
+
 }
 

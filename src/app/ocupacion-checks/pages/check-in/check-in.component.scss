@@ -1,24 +1,25 @@
 .titulo{
     text-align: center;
-    padding-top: 2rem;
 }
 .p-fluid{
-    padding: 0rem 4rem;
-    width: 500px; 
+    padding: 1rem 2rem;
+    width: 700px; 
+}
+.p-grid{
+    padding: 1rem 2rem;   
 }
 .subtitulos{
     padding: 0rem 2rem;
     margin: 0 auto;
-    width: 600px;
-    height: 800px;
+    width: 800px;
+    height: 1100px;
     border: 3px solid rgb(0, 132, 255);
     border-radius: 1.5em;
     background: rgba(0, 132, 255, 0.2);
-    /**/  
 }
 label{
     display: inline-block;
-    width: 100px;
+    width: 200px;
     text-align: left;
     margin-top: 0.9em;
     font-weight:bold;
@@ -26,7 +27,7 @@ label{
 }
 input,textarea {
     font: 1em sans-serif;
-    width: 400px;
+    width: 530px;
     height: 24px;
     box-sizing: border-box;
     border: 1px solid #999;

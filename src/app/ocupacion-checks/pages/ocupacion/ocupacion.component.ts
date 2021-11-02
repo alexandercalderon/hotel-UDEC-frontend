@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {TipoHabitacion} from 'src/app/ocupacion-checks/interfaces/tipo-habitacion'
 import {OcupacionService} from 'src/app/ocupacion-checks/services/ocupacion.service'
 import { environment } from 'src/environments/environment';
+import { MenuItem } from 'primeng/api';
+import { stringify } from '@angular/compiler/src/util';
+import { Habitaciones } from '../../interfaces/habitaciones';
+import { Habitacion } from '../check-in/habitacion';
 @Component({
   selector: 'app-ocupacion',
   templateUrl: './ocupacion.component.html',
@@ -10,14 +14,37 @@ import { environment } from 'src/environments/environment';
 export class OcupacionComponent implements OnInit {
   
   tipoHabitaciones: TipoHabitacion[] = [];
-  url = environment.endPoint + '/show/';
-
+  estado: string;
+  items: MenuItem[];
+  filtrado: string;
 
   constructor(private service: OcupacionService) { }
 
   ngOnInit(): void {
+    this.items = [
+      {label:'Ocupado', icon:'pi pi-ban' ,command:(event) => this.filtrado = event.item.label},
+      {label:'Reservado', icon:'pi pi-clock',command:(event) => this.filtrado = event.item.label },
+      {label:'Limpieza', icon:'pi pi-exclamation-triangle',command:(event) => this.filtrado = event.item.label},
+      {label:'Disponible', icon:'pi pi-check',command:(event) => this.filtrado = event.item.label },
+    ]
+    this.list();
+  }
+
+  filtrar(estado: string) : void{
+      this.service.filtrar(estado.substr(0,1)).subscribe(tipoHabitacion => {
+        this.tipoHabitaciones = tipoHabitacion;
+        this.estadoHabitacion();
+      }) 
+      console.log(this.tipoHabitaciones)
+  }
+  list(): void {
     this.service.list().subscribe(tipoHabitaciones => {
       this.tipoHabitaciones = tipoHabitaciones;
+      this.estadoHabitacion();
+    });
+  }
+
+  estadoHabitacion(): void {
       this.tipoHabitaciones.forEach(tipo => {
         tipo.habitaciones.map(habitacion => {
           switch(habitacion.estado){
@@ -41,8 +68,8 @@ export class OcupacionComponent implements OnInit {
         });
         
       });
-      console.log(this.tipoHabitaciones)
-    });
   }
+
+  
 
 }

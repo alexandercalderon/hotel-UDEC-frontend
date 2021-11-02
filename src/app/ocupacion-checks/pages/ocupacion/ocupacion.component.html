@@ -1,45 +1,8 @@
-<div class="card">
-    <p-dataView
-        #dv
-        [value]="tipoHabitaciones"
-        [paginator]="true"
-        [rows]="3"
-        filterBy="name"
-        layout="grid"
-    >
-        <ng-template let-tipo pTemplate="gridItem">
-            <div class="p-col-12 p-md-4">
-                <div class="product-grid-item card">
-                    <div class="product-grid-item-top">
-                        <h1>{{ tipo.nomTipoHabitacion }}</h1>
-                        <p>{{tipo.descTipoHabitacion}}</p>
-                    </div>
-                    <div class="product-grid-item-content">
-                        <p-card *ngFor="let habitacion of tipo.habitaciones" >
-                            <p-carousel *ngIf="habitacion.imagenes.length!=0" [value]="habitacion.imagenes" orientation="vertical" [style]="{'max-width':'600px', 'margin-top':'1em' ,'align-content':'center'}" verticalViewPortHeight="200px" [numVisible]="1" [numScroll]="1">
-                               <ng-template pTemplate="header">
-                                   <h5>habitación {{habitacion.numHabitacion}}</h5>
-                                </ng-template>      
-                                    <ng-template let-imagenes pTemplate="item">
-                                        <div class="product-item">
-                                            <div class="product-item-content">
-                                                <div class="p-mb-3" >
-                                                    <img src="{{url}}/{{habitacion.idHabitacion}}/{{imagenes.id}}" style="max-width: 300px;" class="product-image" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                            </p-carousel>
-                            <ng-template pTemplate="footer">
-                                <p-message *ngIf="habitacion.estado=='Limpieza'" severity="info" text="{{habitacion.estado}}" styleClass="p-mr-2"></p-message>
-                                <p-message *ngIf="habitacion.estado=='Reservado'" severity="warn" text="{{habitacion.estado}}" styleClass="p-mr-2"></p-message>
-                                <p-message *ngIf="habitacion.estado=='Disponible'" severity="success" text="{{habitacion.estado}}" styleClass="p-mr-2"></p-message>
-                                <p-message *ngIf="habitacion.estado=='Ocupado'" severity="error" text="{{habitacion.estado}}" styleClass="p-mr-2"></p-message>
-                            </ng-template>
-                        </p-card>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-    </p-dataView>
-</div>
+<p-splitButton label="filtrar" icon="pi pi-check" (onClick)="filtrar(filtrado)" [model]="items" ></p-splitButton>
+<button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="list()"></button>
+<p-messages severity="info" *ngIf="tipoHabitaciones.length == 0">
+    <ng-template pTemplate>
+        <div class="p-ml-2">no hay habitadciones con este estado</div>
+    </ng-template>
+</p-messages>
+<app-habitaciones *ngIf="tipoHabitaciones.length > 0" [tipoHabitaciones]="tipoHabitaciones"></app-habitaciones>

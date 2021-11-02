@@ -46,6 +46,8 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
+                    {path: 'ocupacion',component: OcupacionComponent},
+                    {path: 'check-in', component: CheckInComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},
@@ -75,14 +77,12 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
                     {path: 'pages/help', component: AppHelpComponent},
                     {path: 'pages/empty', component: EmptyDemoComponent},
                     {path: 'documentation', component: DocumentationComponent},
-                    {path: 'check-in', component: CheckInComponent}
                 ]
             },
             {path: 'error', component: AppErrorComponent},
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'login', component: AppLoginComponent},
-            {path: 'ocupacion',component: OcupacionComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

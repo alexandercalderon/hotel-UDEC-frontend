@@ -93,6 +93,7 @@ import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
+import { CheckService } from './ocupacion-checks/pages/check-in/check.service';
 
 // Demo pages
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
@@ -134,6 +135,8 @@ import {MenuService} from './app.menu.service';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
 import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.component';
+import {EstadoComponent} from './ocupacion-checks/pages/components/estado/estado.component'
+import { HabitacionesComponent } from './ocupacion-checks/pages/components/habitaciones/habitaciones.component';
 
 @NgModule({
     imports: [
@@ -261,11 +264,13 @@ import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.
         OcupacionComponent,
         CheckInComponent,
         CheckOutComponent,
+        EstadoComponent,
+        HabitacionesComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService
+        PhotoService, ProductService, MenuService, CheckService
     ],
     bootstrap: [AppComponent]
 })

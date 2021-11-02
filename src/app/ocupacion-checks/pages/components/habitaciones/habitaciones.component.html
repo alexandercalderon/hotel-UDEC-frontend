@@ -1,0 +1,43 @@
+<div class="card">
+    <p-dataView
+        #dv
+        [value]="tipoHabitaciones"
+        [paginator]="true"
+        [rows]="3"
+        filterBy="name"
+        layout="grid"
+    >
+        <ng-template let-tipo pTemplate="gridItem">
+            <div class="p-col-13 p-md-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <h1>{{ tipo.nomTipoHabitacion }}</h1>
+                        <p>{{tipo.descTipoHabitacion}}</p>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <p-card *ngFor="let habitacion of tipo.habitaciones" >
+                            <p-carousel *ngIf="habitacion.imagenes.length!=-1" [value]="habitacion.imagenes" orientation="vertical" [style]="{'max-width':'600px', 'margin-top':'1em' ,'align-content':'center'}" verticalViewPortHeight="200px" [numVisible]="1" [numScroll]="1">
+                               <ng-template pTemplate="header">
+                                   <h5>habitación {{habitacion.numHabitacion}}</h5>
+                                </ng-template>      
+                                    <ng-template let-imagenes pTemplate="item">
+                                        <div class="product-item">
+                                            <div class="product-item-content">
+                                                <div class="p-mb-4" >
+                                                    <img src="{{url}}/{{habitacion.idHabitacion}}/{{imagenes.id}}" style="max-width: 299px;" class="product-image" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                            </p-carousel>
+                            <ng-template pTemplate="footer">
+                                <app-estado [estado]="habitacion.estado"></app-estado>
+                                <p-splitButton label="Modificar" icon="pi pi-key" (onClick)="update(estado,habitacion.idHabitacion,tipo.idTipoHabitacion, habitacion)" [model]="items" styleClass="p-button-warning p-mr-3"></p-splitButton>
+                            </ng-template>
+                        </p-card>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>

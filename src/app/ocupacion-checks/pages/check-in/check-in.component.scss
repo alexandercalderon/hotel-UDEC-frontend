@@ -1,18 +1,16 @@
 .titulo{
     text-align: center;
 }
-.p-fluid{
-    padding: 1rem 2rem;
-    width: 700px; 
-}
 .p-grid{
-    padding: 1rem 2rem;   
+    padding: 0.2rem 2rem;
+    width: auto;   
 }
+
 .subtitulos{
     padding: 0rem 2rem;
     margin: 0 auto;
     width: 800px;
-    height: 1100px;
+    height: 1010px;
     border: 3px solid rgb(0, 132, 255);
     border-radius: 1.5em;
     background: rgba(0, 132, 255, 0.2);
@@ -27,8 +25,8 @@ label{
 }
 input,textarea {
     font: 1em sans-serif;
-    width: 530px;
-    height: 24px;
+    width: 450px;
+    height: 30px;
     box-sizing: border-box;
     border: 1px solid #999;
     border-radius: 1.5em;
@@ -58,4 +56,8 @@ button:hover {
 .buttonguardar {
     position:relative;
     left: 40%;
+}
+.buttoncargar{
+    position:relative;
+    left: 2%;
 }

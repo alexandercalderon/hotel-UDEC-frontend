@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PlantillaUsuario } from './plantilla-usuario';
+import { CheckIn } from './check-in';
+import { CheckService } from './check.service';
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
@@ -7,16 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckInComponent implements OnInit {
 
-  constructor() { }
+  public plantillaUsuario : PlantillaUsuario;
+  
+  public checkIn: CheckIn;
 
-  private nombre: String;
+  constructor(private checkService: CheckService) { }
 
   ngOnInit(): void {
+    this.plantillaUsuario = {} as PlantillaUsuario;
+    this.checkIn = {} as CheckIn;
   }
 
-  desactivar = true;
-
-  onEnter(desactivar: boolean) { desactivar = true; }
+  cargarUsuario(): void{
+    this.checkService.getCheckInByCedula(this.plantillaUsuario).subscribe(
+      c =>{
+        this.checkIn = c
+      }
+    )
+  }
 
 }
-

@@ -2,7 +2,7 @@
 <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="list()"></button>
 <p-messages severity="info" *ngIf="tipoHabitaciones.length == 0">
     <ng-template pTemplate>
-        <div class="p-ml-2">no hay habitadciones con el estado {{filtrado}}</div>
+        <div class="p-ml-2">no hay habitadciones con este estado</div>
     </ng-template>
 </p-messages>
 <app-habitaciones *ngIf="tipoHabitaciones.length > 0" [tipoHabitaciones]="tipoHabitaciones"></app-habitaciones>

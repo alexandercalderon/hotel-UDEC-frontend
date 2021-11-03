@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlantillaUsuario } from './plantilla-usuario';
 import { CheckIn } from './check-in';
 import { CheckService } from './check.service';
+import { Usuario } from './usuario';
+import { Habitaciones } from '../../interfaces/habitaciones';
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
@@ -18,6 +20,9 @@ export class CheckInComponent implements OnInit {
   ngOnInit(): void {
     this.plantillaUsuario = {} as PlantillaUsuario;
     this.checkIn = {} as CheckIn;
+    this.checkIn.usuario = {} as Usuario;
+    this.checkIn.usuario.habitaciones = [] as Habitaciones[];
+    this.checkIn.usuario.habitaciones[0] = {} as Habitaciones;
   }
 
   cargarUsuario(): void{

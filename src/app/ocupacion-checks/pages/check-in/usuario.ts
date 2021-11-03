@@ -1,16 +1,16 @@
 import { Habitacion } from './habitacion';
 
-export class Usuario {
+export interface Usuario {
 
-    public id:number;
-    public cedula:string;
-    public nombre:string;
-    public apellido:string;
-    public direccion:string;
-    public ciudad:string;
-    public email:string;
-    public telefono:string;
-    public habitaciones: Habitacion[];
+    id?:number;
+    cedula?:string;
+    nombre?:string;
+    apellido?:string;
+    direccion?:string;
+    ciudad?:string;
+    email?:string;
+    telefono?:string;
+    habitaciones?: Habitacion[];
 
 
 }

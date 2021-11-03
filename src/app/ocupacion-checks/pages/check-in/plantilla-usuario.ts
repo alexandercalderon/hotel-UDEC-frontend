@@ -1,5 +1,5 @@
 export interface PlantillaUsuario {
 
-    cedula:string;
+    cedula?:string;
 
 }

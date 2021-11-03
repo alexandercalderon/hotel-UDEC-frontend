@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TipoHabitacion} from 'src/app/ocupacion-checks/interfaces/tipo-habitacion'
 import {OcupacionService} from 'src/app/ocupacion-checks/services/ocupacion.service'
-import { environment } from 'src/environments/environment';
 import { MenuItem } from 'primeng/api';
-import { stringify } from '@angular/compiler/src/util';
-import { Habitaciones } from '../../interfaces/habitaciones';
-import { Habitacion } from '../check-in/habitacion';
 @Component({
   selector: 'app-ocupacion',
   templateUrl: './ocupacion.component.html',
@@ -34,7 +30,7 @@ export class OcupacionComponent implements OnInit {
       this.service.filtrar(estado.substr(0,1)).subscribe(tipoHabitacion => {
         this.tipoHabitaciones = tipoHabitacion;
         this.estadoHabitacion();
-      }) 
+      })
       console.log(this.tipoHabitaciones)
   }
   list(): void {
@@ -70,6 +66,6 @@ export class OcupacionComponent implements OnInit {
       });
   }
 
-  
+
 
 }

@@ -12,7 +12,7 @@ import { Habitacion } from '../check-in/habitacion';
   styleUrls: ['./ocupacion.component.scss']
 })
 export class OcupacionComponent implements OnInit {
-  
+
   tipoHabitaciones: TipoHabitacion[] = [];
   estado: string;
   items: MenuItem[];
@@ -49,24 +49,24 @@ export class OcupacionComponent implements OnInit {
         tipo.habitaciones.map(habitacion => {
           switch(habitacion.estado){
             case 'D': {
-                habitacion.estado='Disponible' 
+                habitacion.estado='Disponible'
               break;
             }
             case 'O': {
-                habitacion.estado='Ocupado' 
+                habitacion.estado='Ocupado'
               break;
             }
             case 'R': {
-                habitacion.estado='Reservado' 
+                habitacion.estado='Reservado'
               break;
             }
             case 'L': {
-                habitacion.estado='Limpieza' 
+                habitacion.estado='Limpieza'
               break;
             }
           }
         });
-        
+
       });
   }
 

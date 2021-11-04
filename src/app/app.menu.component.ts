@@ -20,8 +20,9 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']},
-            {label: 'Ocupacion', icon: 'pi pi-fw pi-home', routerLink: ['/ocupacion']},
-            {label: 'Checkin', icon: 'pi pi-fw pi-home', routerLink: ['/check-in']},
+            {label: 'Ocupacion', icon: 'pi pi-fw pi-th-large', routerLink: ['/ocupacion']},
+            {label: 'Checkin', icon: 'pi pi-fw pi-check-square', routerLink: ['/check-in']},
+            {label: 'Checkout', icon: 'pi pi-fw pi-file-excel', routerLink: ['/check-out']},
             {
                 label: 'UI Kit', icon: 'pi pi-fw pi-star-o', routerLink: ['/uikit'], badge: 6,
                 items: [
@@ -67,7 +68,9 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Error', icon: 'pi pi-fw pi-times-circle', routerLink: ['/error']},
                     {label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/notfound']},
                     {label: 'Access Denied', icon: 'pi pi-fw pi-lock', routerLink: ['/access']},
-                    {label: 'Empty', icon: 'pi pi-fw pi-circle-off', routerLink: ['/pages/empty']}
+                    {label: 'Empty', icon: 'pi pi-fw pi-circle-off', routerLink: ['/pages/empty']},
+                    {label: 'Guardado checkin', icon: 'pi pi-fw pi-circle-off', routerLink: ['/savecheckin']},
+                    {label: 'Guardado checkout', icon: 'pi pi-fw pi-circle-off', routerLink: ['/savecheckout']}
                 ]
             },
             {

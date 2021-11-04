@@ -1,0 +1,63 @@
+.titulo{
+    text-align: center;
+}
+.p-grid{
+    padding: 0.2rem 2rem;
+    width: auto;   
+}
+
+.subtitulos{
+    padding: 0rem 2rem;
+    margin: 0 auto;
+    width: 800px;
+    height: 2450px;
+    border: 3px solid rgb(162, 0, 255);
+    border-radius: 1.5em;
+    background: rgba(162, 0, 255, 0.2);
+}
+label{
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+    margin-top: 0.9em;
+    font-weight:bold;
+    font-size: 17px;
+}
+input,textarea {
+    font: 1em sans-serif;
+    width: 450px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 1.5em;
+    margin-top: 0.9em;
+    vertical-align: top;
+}
+button{
+    width: 100px;
+    cursor:pointer;
+    background-color: #692fa0;
+    border:none;
+    color: #ffffff;
+    padding: 15px 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 12px;
+    float: left;
+    margin: 10px;
+}
+button:hover {
+    background-color: rgb(167, 114, 211);
+}
+.buttoncancelar {
+    position:relative;
+    left: 30%;
+}
+.buttonguardar {
+    position:relative;
+    left: 40%;
+}
+.buttoncargar{
+    position:relative;
+    left: 2%;
+}

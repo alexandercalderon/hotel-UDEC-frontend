@@ -1,17 +1,17 @@
 <html>
     <body class="titulo">
         <h1>
-            CHECK-IN
+            CHECK-IN 2
         </h1>
     </body>
     <body class="subtitulos">
         <div class="p-field p-grid">
             <label for="cedula" class="p-col-fixed" style="width:100px">Cedula:</label>
             <div class="p-col">
-                <input name="cedula" [(ngModel)]="plantillaUsuario.cedula" type="text"> 
+                <input name="cedula" type="text"> 
             </div>
             <div class="buttoncargar" id="botoncargar">
-                <button (click)="cargarUsuario()" >Cargar</button>
+                <button>Cargar</button>
             </div>
         </div>
         <h2>         
@@ -20,53 +20,53 @@
         <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
                 <label for="fechadeingreso">Fecha de ingreso:</label>
-                <input name="fechadeingreso" [(ngModel)]="checkIn.fechaIngreso" type="text"
+                <input name="fechadeingreso" type="text"
                 > 
             </div>
             <div class="p-field p-col">
                 <label for="diashospedados">Dias hospedados:</label>
-                <input name="diashospedados" [(ngModel)]="checkIn.numeroDias" type="text"> 
+                <input name="diashospedados" type="text"> 
             </div>
             <div class="p-field p-col">
                 <label for="fechadeegreso">Fecha de egreso:</label>
-                <input name="fechadeegreso" [(ngModel)]="checkIn.fechaSalida" type="text"> 
+                <input name="fechadeegreso" type="text"> 
             </div>
         </div>
         <h2>Datos del huesped</h2> 
         <div class="p-field p-grid">
             <label for="nombres" class="p-col-fixed" style="width:100px">Nombres:</label>
             <div class="p-col">
-                <input name="nombre" [(ngModel)]="checkIn.usuario.nombre" type="text"> 
+                <input name="nombre" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="apellidos" class="p-col-fixed" style="width:100px">Apellidos:</label>
             <div class="p-col">
-                <input name="apellido" [(ngModel)]="checkIn.usuario.apellido" type="text"> 
+                <input name="apellido" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="ciudad" class="p-col-fixed" style="width:100px">Ciudad:</label>
             <div class="p-col">
-                <input name="ciudad" [(ngModel)]="checkIn.usuario.ciudad" type="text"> 
+                <input name="ciudad" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="direccion" class="p-col-fixed" style="width:100px">Direccion:</label>
             <div class="p-col">
-                <input name="direccion" [(ngModel)]="checkIn.usuario.direccion" type="text"> 
+                <input name="direccion" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="email" class="p-col-fixed" style="width:100px">E-mail:</label>
             <div class="p-col">
-                <input name="email" [(ngModel)]="checkIn.usuario.email" type="text"> 
+                <input name="email" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="celular" class="p-col-fixed" style="width:100px">Celular:</label>
             <div class="p-col">
-                <input name="celular" [(ngModel)]="checkIn.usuario.telefono" type="text"> 
+                <input name="celular" type="text"> 
             </div>
         </div>
         <h2>Datos de la reservacion</h2> 

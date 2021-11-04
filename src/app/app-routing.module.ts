@@ -38,6 +38,10 @@ import {AppHelpComponent} from './pages/app.help.component';
 import Component from '@fullcalendar/core/component/Component';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
+import { CheckIn2Component } from './ocupacion-checks/pages/check-in/check-in2.component';
+import {CheckOutComponent} from './ocupacion-checks/pages/check-out/check-out.component';
+import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
+import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
 
 @NgModule({
     imports: [
@@ -48,6 +52,8 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
                     {path: '', component: DashboardDemoComponent},
                     {path: 'ocupacion',component: OcupacionComponent},
                     {path: 'check-in', component: CheckInComponent},
+                    {path: 'check-in2', component: CheckIn2Component},
+                    {path: 'check-out', component: CheckOutComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},
@@ -83,6 +89,8 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'login', component: AppLoginComponent},
+            {path: 'savecheckin', component: AppSaveCheckinComponent},
+            {path: 'savecheckout', component: AppSaveCheckoutComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

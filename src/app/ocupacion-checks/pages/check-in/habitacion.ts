@@ -1,7 +1,7 @@
-export class Habitacion {
+export interface Habitacion {
 
-    public idHabitacion:number;
-    public numeroHabitacion:number;
-    public tarifa:number;
+    idHabitacion?:number;
+    numeroHabitacion?:number;
+    tarifa?:number;
 
 }

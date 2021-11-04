@@ -4,6 +4,8 @@ import { CheckIn } from './check-in';
 import { CheckService } from './check.service';
 import {Product} from '../../../demo/domain/product';
 import {ProductService} from '../../../demo/service/productservice';
+import { Usuario } from './usuario';
+import { Habitaciones } from '../../interfaces/habitaciones';
 
 @Component({
   selector: 'app-check-in',
@@ -25,6 +27,10 @@ export class CheckInComponent implements OnInit {
     this.checkIn = {} as CheckIn;
 
     this.productService.getProductsSmall().then(data => this.products = data);
+
+    this.checkIn.usuario = {} as Usuario;
+    this.checkIn.usuario.habitaciones = [] as Habitaciones[];
+    this.checkIn.usuario.habitaciones[0] = {} as Habitaciones;
   }
 
   cargarUsuario(): void{
@@ -36,13 +42,3 @@ export class CheckInComponent implements OnInit {
   }
 
 }
-/*        <div class="p-fluid p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label for="habitaciones">Numero de habitaciones:</label>
-                <input name="habitaciones" [(ngModel)]="checkIn.usuario.habitaciones[0].numeroHabitacion" type="text"> 
-            </div>
-            <div class="p-field p-col">
-                <label for="tarifa">Tarifa total:</label>
-                <input name="tarifa" [(ngModel)]="checkIn.usuario.habitaciones[0].tarifa" type="text"> 
-            </div>
-        </div> */

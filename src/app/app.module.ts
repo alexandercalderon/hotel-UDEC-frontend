@@ -136,7 +136,6 @@ import {ProductService} from './demo/service/productservice';
 import {MenuService} from './app.menu.service';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
-import { CheckIn2Component } from './ocupacion-checks/pages/check-in/check-in2.component';
 import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.component';
 import {EstadoComponent} from './ocupacion-checks/pages/components/estado/estado.component'
 import { HabitacionesComponent } from './ocupacion-checks/pages/components/habitaciones/habitaciones.component';
@@ -266,7 +265,6 @@ import { HabitacionesComponent } from './ocupacion-checks/pages/components/habit
         AppAccessdeniedComponent,
         OcupacionComponent,
         CheckInComponent,
-        CheckIn2Component,
         CheckOutComponent,
         EstadoComponent,
         HabitacionesComponent,

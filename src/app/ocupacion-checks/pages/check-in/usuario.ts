@@ -7,10 +7,9 @@ export interface Usuario {
     nombre?:string;
     apellido?:string;
     direccion?:string;
-    ciudad?:string;
     email?:string;
     telefono?:string;
+    genero?:string;
     habitaciones?: Habitacion[];
-
 
 }

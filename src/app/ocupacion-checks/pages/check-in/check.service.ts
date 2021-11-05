@@ -15,8 +15,8 @@ export class CheckService {
   constructor(private http: HttpClient) { }
 
 
-  getCheckInByCedula(cedula: PlantillaUsuario): Observable<CheckIn>{
-    return this.http.post<CheckIn>(`${this.urlEndPont}/get/cedula`, cedula, { headers: this.httpHeaders });
+  getCheckInByCedula(usuario: PlantillaUsuario): Observable<CheckIn>{
+    return this.http.post<CheckIn>(`${this.urlEndPont}/get/identificacion`, usuario, { headers: this.httpHeaders });
   }
 
 }

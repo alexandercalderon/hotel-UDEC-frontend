@@ -8,7 +8,8 @@
         <div class="p-field p-grid">
             <label for="cedula" class="p-col-fixed" style="width:100px">Cedula:</label>
             <div class="p-col">
-                <input name="cedula" [(ngModel)]="plantillaUsuario.cedula" type="text"> 
+                <input name="cedula" [(ngModel)]="plantillaUsuario.identificacion" type="text"
+                pTooltip="Ingrese la cedula del usuario"> 
             </div>
             <div class="buttoncargar" id="botoncargar">
                 <button (click)="cargarUsuario()" >Cargar</button>
@@ -46,9 +47,9 @@
             </div>
         </div>
         <div class="p-field p-grid">
-            <label for="ciudad" class="p-col-fixed" style="width:100px">Ciudad:</label>
+            <label for="ciudad" class="p-col-fixed" style="width:100px">Genero:</label>
             <div class="p-col">
-                <input name="ciudad" [(ngModel)]="checkIn.usuario.ciudad" type="text"> 
+                <input name="ciudad" [(ngModel)]="checkIn.usuario.genero" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
@@ -71,22 +72,28 @@
         </div>
         <h2>Datos de la reservacion</h2> 
         <div class="card">
-            <p-table responsiveLayout="scroll" [value]="products">
+            <p-table responsiveLayout="scroll" [value]="habitacion" *ngIf="habitacion?.length>0; else aviso">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th>Numero de habitacion </th>
+                        <th>Numero de Habitación</th>
                         <th>Tipo</th>
                         <th>Precio</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-product let-columns="columns">
+                <ng-template pTemplate="body" let-habitacion let-columns="columns">
                     <tr>
-                        <td>{{product.name}}</td>
-                        <td>{{product.category}}</td>
-                        <td>{{product.price | currency:'USD'}}</td>
+                        <td>{{habitacion.numeroHabitacion}}</td>
+                        <td>{{habitacion.tipo}}</td>
+                        <td>{{habitacion.tarifa | currency:'USD'}}</td>
                     </tr>
                 </ng-template>
             </p-table>
+            <ng-template #aviso>
+                <p-card>
+                     No hay habitaciones
+                </p-card>
+            </ng-template>
+            
         </div>
         <div class="buttoncancelar">
             <button type="submit">Cancelar</button>

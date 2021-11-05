@@ -1,7 +1,7 @@
 export interface Habitacion {
 
-    idHabitacion?:number;
     numeroHabitacion?:number;
+    tipo?:string;
     tarifa?:number;
 
 }

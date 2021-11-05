@@ -6,6 +6,7 @@ import {Product} from '../../../demo/domain/product';
 import {ProductService} from '../../../demo/service/productservice';
 import { Usuario } from './usuario';
 import { Habitaciones } from '../../interfaces/habitaciones';
+import { Habitacion } from './habitacion';
 
 @Component({
   selector: 'app-check-in',
@@ -15,9 +16,8 @@ import { Habitaciones } from '../../interfaces/habitaciones';
 export class CheckInComponent implements OnInit {
 
   public plantillaUsuario : PlantillaUsuario;
-  
   public checkIn: CheckIn;
-
+  public habitacion: Habitacion[];
   products: Product[];
 
   constructor( private checkService: CheckService, private productService: ProductService) { }
@@ -29,14 +29,15 @@ export class CheckInComponent implements OnInit {
     this.productService.getProductsSmall().then(data => this.products = data);
 
     this.checkIn.usuario = {} as Usuario;
-    this.checkIn.usuario.habitaciones = [] as Habitaciones[];
-    this.checkIn.usuario.habitaciones[0] = {} as Habitaciones;
+    this.checkIn.usuario.habitaciones = [] as Habitacion[];
+    this.habitacion = [] as Habitacion[];
   }
 
   cargarUsuario(): void{
     this.checkService.getCheckInByCedula(this.plantillaUsuario).subscribe(
       c =>{
         this.checkIn = c
+        this.habitacion = c.usuario.habitaciones;
       }
     )
   }

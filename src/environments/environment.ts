@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  endPoint: "http://localhost:8080"
+  endPoint: "http://localhost:8003",
+  endPointCheckOut: "http://localhost:8002"
 };

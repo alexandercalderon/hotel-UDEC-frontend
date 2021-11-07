@@ -139,6 +139,7 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
 import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.component';
 import {EstadoComponent} from './ocupacion-checks/pages/components/estado/estado.component'
 import { HabitacionesComponent } from './ocupacion-checks/pages/components/habitaciones/habitaciones.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
     imports: [
@@ -274,7 +275,7 @@ import { HabitacionesComponent } from './ocupacion-checks/pages/components/habit
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, CheckService
+        PhotoService, ProductService, MenuService, CheckService, MessageService
     ],
     bootstrap: [AppComponent]
 })

@@ -37,6 +37,7 @@ export class OcupacionComponent implements OnInit {
     this.service.list().subscribe(tipoHabitaciones => {
       this.tipoHabitaciones = tipoHabitaciones;
       this.estadoHabitacion();
+      console.log(tipoHabitaciones)
     });
   }
 

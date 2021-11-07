@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <html>
     <body class="titulo">
         <h1>
@@ -6,13 +7,12 @@
     </body>
     <body class="subtitulos">
         <div class="p-field p-grid">
-            <label for="cedula" class="p-col-fixed" style="width:100px">Cedula:</label>
+            <label for="cedula" class="p-col-fixed"  style="width:100px">Cedula:</label>
             <div class="p-col">
-                <input name="cedula" type="text"> 
+                 <p-inputNumber inputId="inputnumber" [(ngModel)]="cedula"></p-inputNumber>
             </div>
-            <div class="buttoncargar" id="botoncargar">
-                <button>Cargar</button>
-            </div>
+            <button pButton pRipple type="button" icon="pi pi-times-circle" class="p-button-rounded p-button-danger" (click)="reset()"></button>
+            <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="buscar()"></button>
         </div>
         <h2>         
             Fechas de estadia
@@ -20,58 +20,86 @@
         <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
                 <label for="fechadeingreso">Fecha de ingreso:</label>
-                <input name="fechadeingreso" type="text"
-                > 
+                    <input *ngIf="checkOut != null" name="fechadeingreso" type="text" [(ngModel)]="checkOut.fechaIngreso" disabled > 
+                    <input *ngIf="checkOut == null" name="fechadeingreso" type="text"  > 
             </div>
             <div class="p-field p-col">
                 <label for="diashospedados">Dias hospedados:</label>
-                <input name="diashospedados" type="text"> 
+                <input *ngIf="checkOut != null" name="diashospedados" [(ngModel)]="checkOut.numeroDias" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="diashospedados" type="text"> 
             </div>
             <div class="p-field p-col">
                 <label for="fechadeegreso">Fecha de egreso:</label>
-                <input name="fechadeegreso" type="text"> 
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.fechaEgreso" name="fechadeegreso" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="fechadeegreso" type="text"> 
             </div>
         </div>
         <h2>Datos del huesped</h2> 
         <div class="p-field p-grid">
-            <label for="nombres" class="p-col-fixed" style="width:100px">Nombres:</label>
+            <label for="primer nombre" class="p-col-fixed" style="width:100px">Primer nombre:</label>
             <div class="p-col">
-                <input name="nombre" type="text"> 
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.persona.priNombre" name="priNombre" type="text" disabled> 
+                <input *ngIf="checkOut == null"name="nombre" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
-            <label for="apellidos" class="p-col-fixed" style="width:100px">Apellidos:</label>
+            <label for="primer nombre" class="p-col-fixed" style="width:100px">Segunda nombre:</label>
             <div class="p-col">
-                <input name="apellido" type="text"> 
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.persona.segNombre" name="priNombre" type="text" disabled> 
+                <input *ngIf="checkOut == null"name="nombre" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
-            <label for="ciudad" class="p-col-fixed" style="width:100px">Ciudad:</label>
+            <label  for="apellidos" class="p-col-fixed"  style="width:100px">Primer apellido:</label>
             <div class="p-col">
-                <input name="ciudad" type="text"> 
+                <input *ngIf="checkOut != null" name="apellido" [(ngModel)]="checkOut.persona.priApellido" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="apellido" type="text"> 
+            </div>
+        </div>
+        <div class="p-field p-grid">
+            <label  for="apellidos" class="p-col-fixed"  style="width:100px">Segundo apellido:</label>
+            <div class="p-col">
+                <input *ngIf="checkOut != null" name="apellido" [(ngModel)]="checkOut.persona.priApellido" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="apellido" type="text"> 
+            </div>
+        </div>
+        <div class="p-field p-grid">
+            <label for="ciudad" class="p-col-fixed" style="width:100px">Genero:</label>
+            <div class="p-col">
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.persona.genero" name="ciudad" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="ciudad" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="direccion" class="p-col-fixed" style="width:100px">Direccion:</label>
             <div class="p-col">
-                <input name="direccion" type="text"> 
+                <input *ngIf="checkOut != null " [(ngModel)]="checkOut.persona.direccion" name="direccion" type="text" disabled> 
+                <input *ngIf="checkOut == null " name="direccion" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="email" class="p-col-fixed" style="width:100px">E-mail:</label>
             <div class="p-col">
-                <input name="email" type="text"> 
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.persona.correo" name="email" type="text" disabled> 
+                <input *ngIf="checkOut == null" ame="email" type="text"> 
             </div>
         </div>
         <div class="p-field p-grid">
             <label for="celular" class="p-col-fixed" style="width:100px">Celular:</label>
             <div class="p-col">
-                <input name="celular" type="text"> 
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.persona.telefono" name="celular" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="celular" type="text"> 
             </div>
         </div>
         <h2>Datos de la reservacion</h2> 
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <button type="button" pButton pRipple label="Buscar"></button>
+                <input type="text" pInputText placeholder="habitacion">         
+            </div>
+        </div>
         <div class="card">
-            <p-table responsiveLayout="scroll" [value]="products">
+            <p-table responsiveLayout="scroll" [value]="habitacion">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th>Numero de habitacion </th>
@@ -81,30 +109,29 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-product let-columns="columns">
                     <tr>
-                        <td>{{product.name}}</td>
-                        <td>{{product.category}}</td>
-                        <td>{{product.price | currency:'USD'}}</td>
+                        <td>{{product.numHabitacion}}</td>
+                        <td>{{product.tipoHabitacion.nomTipoHabitacion}}</td>
+                        <td>{{product.tipoHabitacion.precioHabitacion | currency:'USD'}}</td>
                     </tr>
                 </ng-template>
             </p-table>
         </div>
+        <button pButton pRipple type="button" label="agregar" class="p-button-rounded p-button-success"></button>
         <h2>Adeudos</h2>
         <div class="card">
-            <p-table responsiveLayout="stack" [value]="products">
+            <p-table responsiveLayout="stack" [value]="adeudos">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
-                        <th>Codigo </th>
                         <th>Servicio</th>
                         <th>Precio unitario</th>
-                        <th>Precio importe</th>
+                        <th>importe</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product let-columns="columns">
                     <tr>
-                        <td><span class="p-column-title">Name</span>{{product.name}}</td>
-                        <td><span class="p-column-title">Price</span>{{product.price | currency:'USD'}}</td>
-                        <td><span class="p-column-title">Category</span>{{product.category}}</td>
-                        <td><span class="p-column-title">Quantity</span>{{product.quantity}}</td>
+                        <td>{{product.servicioHabitacion}}</td>
+                        <td>{{product.precioUnitario | currency:'USD'}}</td>
+                        <td>{{product.importe}}</td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -112,21 +139,24 @@
         <h2>Metodo de pago</h2>
         <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
-                <label for="tipodepago">Tipo:</label>
-                <input name="tipodepago" type="text"
-                > 
+                <label for="tipodepago">Fecha venta:</label>
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.ventas.fecVenta" name="fechaVenta" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="fechaVenta" type="text"> 
             </div>
             <div class="p-field p-col">
-                <label for="numerodepago">Numero de pago:</label>
-                <input name="numerodepago" type="text"> 
+                <label for="numerodepago">Total venta:</label>
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.ventas.totalVente" name="totalVenta" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="totalVenta" type="text" disabled> 
             </div>
             <div class="p-field p-col">
-                <label for="titular">Titular:</label>
-                <input name="titular" type="text"> 
+                <label for="titular">tipo Pago:</label>
+                <input *ngIf="checkOut != null"  [(ngModel)]="checkOut.ventas.pago.tipoPago"name="tipoPago" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="tipoPago" type="text"> 
             </div>
             <div class="p-field p-col">
-                <label for="monto">Monto:</label>
-                <input name="monto" type="text"> 
+                <label for="monto">Fecha pago:</label>
+                <input *ngIf="checkOut != null" [(ngModel)]="checkOut.ventas.pago.fechaPago" name="fechaPago" type="text" disabled> 
+                <input *ngIf="checkOut == null" name="fechaPago" type="text"> 
             </div>
         </div>
         <div class="buttoncancelar">

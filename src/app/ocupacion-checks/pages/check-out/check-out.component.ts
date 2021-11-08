@@ -6,6 +6,9 @@ import { Adeudo } from "../../interfaces/adeudo";
 import { CheckOut } from "../../interfaces/check-out";
 import { Habitaciones } from "../../interfaces/habitaciones";
 import { CheckOutService } from "../../services/check-out.service";
+import { Ventas } from "../../interfaces/ventas";
+import { Persona } from "../../interfaces/persona";
+import { Pago } from "../../interfaces/pago";
 
 @Component({
     selector: "app-check-out",
@@ -22,6 +25,10 @@ export class CheckOutComponent implements OnInit {
     adeudos: Adeudo[] = [];
 
     habitacion: Habitaciones[] = [];
+
+    numHabitacion: string;
+    
+    pago = 0;
 
     constructor(
         private productService: ProductService,
@@ -54,9 +61,31 @@ export class CheckOutComponent implements OnInit {
             }
         });
     }
-    reset(): void{
-      this.checkOut = null;
-      this.adeudos = null;
-      this.habitacion = null;
+    reset(): void {
+        this.checkOut = null;
+        this.adeudos = null;
+        this.habitacion = null;
+    }
+
+    findHabitacion(): void {
+        this.checkOutService.findByHabitacion(this.numHabitacion).subscribe(
+            (habitacion) => {
+                this.habitacion.push(habitacion);
+                    this.pago += habitacion.tipoHabitacion.precioHabitacion;
+            },
+            (err) => {
+                if (err.status === 404) {
+                    this.messageService.add({
+                        severity: "error",
+                        summary: " habitacion no encontrada D:",
+                        detail: "la habitacion que está buscando, no existe",
+                    });
+                }
+            }
+        );
+    }
+    addAdeudo(): void{
+        const newAdeudo = {} as Adeudo;
+        this.adeudos.push(newAdeudo)
     }
 }

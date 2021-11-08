@@ -94,8 +94,8 @@
         <h2>Datos de la reservacion</h2> 
         <div class="p-col-12 p-md-4">
             <div class="p-inputgroup">
-                <button type="button" pButton pRipple label="Buscar"></button>
-                <input type="text" pInputText placeholder="habitacion">         
+                <button type="button" (click)="findHabitacion()"  pButton pRipple label="Buscar" *ngIf="numHabitacion != undefined && numHabitacion != ''"></button>
+                <input type="text" pInputText [(ngModel)]="numHabitacion"  placeholder="habitacion">         
             </div>
         </div>
         <div class="card">
@@ -116,7 +116,7 @@
                 </ng-template>
             </p-table>
         </div>
-        <button pButton pRipple type="button" label="agregar" class="p-button-rounded p-button-success"></button>
+        <button pButton pRipple type="button" label="agregar" (click)="addAdeudo()" class="p-button-rounded p-button-success"></button>
         <h2>Adeudos</h2>
         <div class="card">
             <p-table responsiveLayout="stack" [value]="adeudos">
@@ -146,12 +146,12 @@
             <div class="p-field p-col">
                 <label for="numerodepago">Total venta:</label>
                 <input *ngIf="checkOut != null" [(ngModel)]="checkOut.ventas.totalVente" name="totalVenta" type="text" disabled> 
-                <input *ngIf="checkOut == null" name="totalVenta" type="text" disabled> 
+                <input  [(ngModel)]="pago" name="totalVenta" type="text" disabled> 
             </div>
             <div class="p-field p-col">
                 <label for="titular">tipo Pago:</label>
                 <input *ngIf="checkOut != null"  [(ngModel)]="checkOut.ventas.pago.tipoPago"name="tipoPago" type="text" disabled> 
-                <input *ngIf="checkOut == null" name="tipoPago" type="text"> 
+                <input *ngIf="checkOut == null"  name="tipoPago" type="text"> 
             </div>
             <div class="p-field p-col">
                 <label for="monto">Fecha pago:</label>

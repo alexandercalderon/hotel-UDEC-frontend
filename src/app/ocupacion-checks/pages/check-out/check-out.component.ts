@@ -5,10 +5,10 @@ import { ProductService } from "../../../demo/service/productservice";
 import { Adeudo } from "../../interfaces/adeudo";
 import { CheckOut } from "../../interfaces/check-out";
 import { Habitaciones } from "../../interfaces/habitaciones";
-import { CheckOutService } from "../../services/check-out.service";
-import { Ventas } from "../../interfaces/ventas";
-import { Persona } from "../../interfaces/persona";
 import { Pago } from "../../interfaces/pago";
+import { Persona } from "../../interfaces/persona";
+import { Ventas } from "../../interfaces/ventas";
+import { CheckOutService } from "../../services/check-out.service";
 
 @Component({
     selector: "app-check-out",
@@ -30,6 +30,8 @@ export class CheckOutComponent implements OnInit {
     
     pago = 0;
 
+    disabled: boolean = false;
+
     constructor(
         private productService: ProductService,
         private checkOutService: CheckOutService,
@@ -40,6 +42,11 @@ export class CheckOutComponent implements OnInit {
         this.productService
             .getProductsSmall()
             .then((data) => (this.products = data));
+            this.checkOut = {} as CheckOut;
+            this.checkOut.persona = {} as Persona;
+            this.checkOut.ventas = {} as Ventas;
+            this.checkOut.ventas.pago = {} as Pago;
+            this.checkOut.ventas.totalVenta = 0;
     }
 
     buscar(): void {
@@ -71,7 +78,7 @@ export class CheckOutComponent implements OnInit {
         this.checkOutService.findByHabitacion(this.numHabitacion).subscribe(
             (habitacion) => {
                 this.habitacion.push(habitacion);
-                    this.pago += habitacion.tipoHabitacion.precioHabitacion;
+                    this.checkOut.ventas.totalVenta += habitacion.tipoHabitacion.precioHabitacion;
             },
             (err) => {
                 if (err.status === 404) {
@@ -87,5 +94,15 @@ export class CheckOutComponent implements OnInit {
     addAdeudo(): void{
         const newAdeudo = {} as Adeudo;
         this.adeudos.push(newAdeudo)
+    }
+    guardar(): void{
+        console.log(this.adeudos);
+        console.log(this.checkOut)
+    }
+    calcular(): void{
+        this.adeudos.forEach(adeudo =>{
+            this.checkOut.ventas.totalVenta += adeudo.precioUnitario * adeudo.importe;
+        });
+        this.disabled = true;
     }
 }

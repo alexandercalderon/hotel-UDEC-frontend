@@ -11,8 +11,10 @@
             <div class="p-col">
                  <p-inputNumber inputId="inputnumber" [(ngModel)]="cedula"></p-inputNumber>
             </div>
-            <button pButton pRipple type="button" icon="pi pi-times-circle" class="p-button-rounded p-button-danger" (click)="reset()"></button>
-            <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="buscar()"></button>
+            <div>
+                <button pButton pRipple type="button" icon="pi pi-times-circle" class="p-button-rounded p-button-danger" (click)="reset()"></button>
+                <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="buscar()"></button>
+            </div>
         </div>
         <h2>         
             Fechas de estadia
@@ -116,8 +118,8 @@
                 </ng-template>
             </p-table>
         </div>
-        <button pButton pRipple type="button" label="agregar" class="p-button-rounded p-button-success"></button>
         <h2>Adeudos</h2>
+        <button pButton pRipple type="button" label="agregar" class="p-button-rounded p-button-success"></button>
         <div class="card">
             <p-table responsiveLayout="stack" [value]="adeudos">
                 <ng-template pTemplate="header" let-columns>

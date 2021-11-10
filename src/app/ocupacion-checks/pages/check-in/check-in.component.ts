@@ -7,6 +7,8 @@ import {ProductService} from '../../../demo/service/productservice';
 import { Usuario } from './usuario';
 import { Habitaciones } from '../../interfaces/habitaciones';
 import { Habitacion } from './habitacion';
+import { MessageService } from "primeng/api";
+import {ToastModule} from 'primeng/toast';
 
 @Component({
   selector: 'app-check-in',
@@ -20,7 +22,8 @@ export class CheckInComponent implements OnInit {
   public habitacion: Habitacion[];
   products: Product[];
 
-  constructor( private checkService: CheckService, private productService: ProductService) { }
+  constructor( private checkService: CheckService, private productService: ProductService
+            , private mess: MessageService) { }
 
   ngOnInit(): void {
     this.plantillaUsuario = {} as PlantillaUsuario;
@@ -38,6 +41,18 @@ export class CheckInComponent implements OnInit {
       c =>{
         this.checkIn = c
         this.habitacion = c.usuario.habitaciones;
+      },
+      err => {
+        this.mess.add({
+          severity: "error",
+          summary: "Información no encontrada",
+          detail: err.error.mensaje,
+        });
+        this.plantillaUsuario = {} as PlantillaUsuario;
+        this.checkIn = {} as CheckIn;
+        this.checkIn.usuario = {} as Usuario;
+        this.checkIn.usuario.habitaciones = [] as Habitacion[];
+        this.habitacion = [] as Habitacion[];
       }
     )
   }

@@ -2,7 +2,7 @@ import { Pago } from "./pago";
 
 export interface Ventas {
     idVenta: number;
-    fecVente: string;
-    totalVenta: number;
+    fecVenta: string;
+    totalVente: number;
     pago: Pago;
 }

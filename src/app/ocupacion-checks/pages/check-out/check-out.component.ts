@@ -5,6 +5,9 @@ import { ProductService } from "../../../demo/service/productservice";
 import { Adeudo } from "../../interfaces/adeudo";
 import { CheckOut } from "../../interfaces/check-out";
 import { Habitaciones } from "../../interfaces/habitaciones";
+import { Pago } from "../../interfaces/pago";
+import { Persona } from "../../interfaces/persona";
+import { Ventas } from "../../interfaces/ventas";
 import { CheckOutService } from "../../services/check-out.service";
 
 @Component({
@@ -23,6 +26,12 @@ export class CheckOutComponent implements OnInit {
 
     habitacion: Habitaciones[] = [];
 
+    numHabitacion: string;
+
+    disabled: boolean = false;
+
+    pago: Pago;
+
     constructor(
         private productService: ProductService,
         private checkOutService: CheckOutService,
@@ -33,6 +42,7 @@ export class CheckOutComponent implements OnInit {
         this.productService
             .getProductsSmall()
             .then((data) => (this.products = data));
+            this.reset();
     }
 
     buscar(): void {
@@ -41,6 +51,7 @@ export class CheckOutComponent implements OnInit {
                 this.checkOut = checkOut;
                 this.habitacion = checkOut.habitacion;
                 this.adeudos = checkOut.adeudos;
+                this.pago =checkOut.ventas.pago;
                 if (this.checkOut.persona.genero == "M")
                     this.checkOut.persona.genero = "Masculino";
                 if (this.checkOut.persona.genero == "F")
@@ -54,9 +65,68 @@ export class CheckOutComponent implements OnInit {
             }
         });
     }
-    reset(): void{
-      this.checkOut = null;
-      this.adeudos = null;
-      this.habitacion = null;
+    reset(): void {
+        this.checkOut = {} as CheckOut;
+        this.checkOut.persona = {} as Persona;
+        this.checkOut.ventas = {} as Ventas;
+        this.checkOut.ventas.totalVente = 0;
+        this.pago = {} as Pago;
+        this.adeudos = [];
+        this.habitacion = [];
+    }
+
+    findHabitacion(): void {
+        this.checkOutService.findByHabitacion(this.numHabitacion).subscribe(
+            (habitacion) => {
+                this.habitacion.push(habitacion);
+                this.checkOut.ventas.totalVente +=
+                    habitacion.tipoHabitacion.precioHabitacion;
+            },
+            (err) => {
+                if (err.status === 404) {
+                    this.messageService.add({
+                        severity: "error",
+                        summary: " habitacion no encontrada D:",
+                        detail: "la habitacion que está buscando, no existe",
+                    });
+                }
+            }
+        );
+    }
+    addAdeudo(): void {
+        const newAdeudo = {} as Adeudo;
+        this.adeudos.push(newAdeudo);
+    }
+    guardar(): void {
+        this.checkOutService.addPerson(this.checkOut.persona).subscribe(
+            (person) => {
+                this.checkOutService
+                    .addVenta(this.checkOut.ventas)
+                    .subscribe((venta) => {
+                        this.checkOutService
+                            .addPago(this.pago, venta.idVenta)
+                            .subscribe((ventaPagada) => {
+                                this.checkOutService.save(this.checkOut, person.idPersona, venta.idVenta).subscribe(check => {
+                                    this.habitacion.forEach(hab => {
+                                        this.checkOutService.AddHabitaciones(hab.idHabitacion, check.id).subscribe(); 
+                                    })
+                                    this.checkOutService.AddAdeudos(this.adeudos, check.id).subscribe(check => {
+                                        console.log(check);
+                                    })
+                                });
+                            });
+                    });
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+    calcular(): void {
+        this.adeudos.forEach((adeudo) => {
+            this.checkOut.ventas.totalVente +=
+                adeudo.precioUnitario * adeudo.importe;
+        });
+        this.disabled = true;
     }
 }

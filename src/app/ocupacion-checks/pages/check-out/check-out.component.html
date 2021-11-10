@@ -61,6 +61,16 @@
         </div>
         <h2>Datos del huesped</h2>
         <div class="p-field p-grid">
+            <label for="segundo nombre" class="p-col-fixed" style="width: 100px">identificacion</label>
+            <div class="p-col">
+                <input
+                    [(ngModel)]="checkOut.persona.identificacion"
+                    name="priNombre"
+                    type="text"
+                />
+            </div>
+        </div>
+        <div class="p-field p-grid">
             <label for="primer nombre" class="p-col-fixed" style="width: 100px"
                 >Primer nombre:</label
             >
@@ -282,7 +292,7 @@
             <div class="p-field p-col">
                 <label for="tipodepago">Fecha venta:</label>
                 <input
-                    [(ngModel)]="checkOut.ventas.fecVente"
+                    [(ngModel)]="checkOut.ventas.fecVenta"
                     name="fechaVenta"
                     type="text"
                 />
@@ -290,7 +300,7 @@
             <div class="p-field p-col">
                 <label for="numerodepago">Total venta:</label>
                 <input
-                    [(ngModel)]="checkOut.ventas.totalVenta"
+                    [(ngModel)]="checkOut.ventas.totalVente"
                     name="totalVenta"
                     type="text"
                     disabled
@@ -299,7 +309,7 @@
             <div class="p-field p-col">
                 <label for="titular">tipo Pago:</label>
                 <input
-                    [(ngModel)]="checkOut.ventas.pago.tipoPago"
+                    [(ngModel)]="pago.tipoPago"
                     name="tipoPago"
                     type="text"
                 />
@@ -307,7 +317,15 @@
             <div class="p-field p-col">
                 <label for="monto">Fecha pago:</label>
                 <input
-                    [(ngModel)]="checkOut.ventas.pago.fechaPago"
+                    [(ngModel)]="pago.fechaPago"
+                    name="fechaPago"
+                    type="text"
+                />
+            </div>
+            <div class="p-field p-col">
+                <label for="monto">id transaccion:</label>
+                <input
+                    [(ngModel)]="pago.idTransaccion"
                     name="fechaPago"
                     type="text"
                 />

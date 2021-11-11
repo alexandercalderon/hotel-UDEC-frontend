@@ -1,0 +1,126 @@
+<div class="p-d-flex">
+    <div class="p-fluid">
+        <button pButton pRipple type="button" label="Regresar" icon="pi pi-arrow-circle-left" iconPos="left" 
+        routerLink="/check-in" class="p-button-info"></button>
+    </div>
+</div>
+
+<h1>Crear Check-in</h1>
+
+    <div class="card">
+        <h4>Fecha de Estadia</h4>
+        <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col">
+                    <label for="calendar1">Fecha de Ingreso</label>
+                    <p-calendar inputId="calendar1" dateFormat="yy/mm/dd" placeholder="Año/Mes/Dia" 
+                    [readonlyInput]="true" showButtonBar="true" yearRange="2000:2030"
+                    [showIcon]="true"></p-calendar>
+                </div>
+                <div class="p-field p-col">
+                    <label for="calendar2">Fecha de Salida</label>
+                    <p-calendar inputId="calendar2" dateFormat="yy/mm/dd" placeholder="Año/Mes/Dia" 
+                    [readonlyInput]="true" showButtonBar="true" yearRange="2000:2030"
+                    [showIcon]="true"></p-calendar>
+                </div>
+                <div class="p-field p-col">
+                    <label for="inputnumber">Numero de Dias</label>
+                    <p-inputNumber inputId="inputnumber" placeholder="N° Dias"></p-inputNumber>
+                </div>
+        </div>
+    </div>
+   
+    <div class="card">
+        <h4>Datos del Huesped</h4>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="cedulaId">Cedula</label>
+            <div class="p-formgroup-inline">
+                <div class="p-field">
+                    <span class="p-float-label p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input id="cedulaId" type="number" pInputText placeholder="Cedula" required>
+                    </span> 
+                </div>
+                <div>
+                    <button pButton pRipple type="button" label="Buscar" 
+                    class="p-button-raised p-button-warning"></button>
+                </div>
+            </div>
+        </div>
+            <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="apellido">Apellido</label>
+                    <input id="apellido" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="ciudad">Ciudad</label>
+                    <input id="ciudad" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="direccion">Direccion</label>
+                    <input id="direccion" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="telefono">Telefono</label>
+                    <input id="telefono" type="text" pInputText disabled required> 
+                </div>
+            </div>
+        
+    </div>
+
+    <div class="card">
+        <h4>Datos de la Reservación</h4>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="cedulaId">Habitacion</label>
+            <div class="p-formgroup-inline">
+                <div class="p-field">
+                    <span class="p-float-label p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input id="cedulaId" type="number" pInputText placeholder="Habitacion" 
+                        required>
+                    </span> 
+                </div>
+                <div>
+                    <button pButton pRipple type="button" label="Buscar" 
+                    class="p-button-raised p-button-warning"></button>
+                </div>
+            </div>
+        </div>
+        <p-table [value]="" responsiveLayout="scroll" 
+        *ngIf="habitaciones?.length>0; else aviso">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>Numero de Habitación</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-habitacion let-columns="columns">
+                <tr>
+                    <td>{{habitacion.numeroHabitacion}}</td>
+                    <td>{{habitacion.tipo}}</td>
+                    <td>{{habitacion.tarifa | currency:'USD'}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <ng-template #aviso>
+            <p-card>
+                 No hay habitaciones
+            </p-card>
+        </ng-template>
+    </div>
+   
+
+
+
+
+
+
+

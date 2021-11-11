@@ -1,10 +1,7 @@
 
-<button pButton pRipple routerLink="/" class="p-button-info" label="Crear Check-In" icon="pi pi-plus-circle" iconPos="left"></button>
+<button pButton pRipple routerLink="/check-in/create" class="p-button-info" label="Crear Check-In" icon="pi pi-plus-circle" iconPos="left"></button>
 <p-toast ></p-toast>
 <div class="card">
-    <div *ngIf="loaderService.isLoading | async" class="loader-container">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
     <h1>Listado de Check-in</h1>
     <p-table *ngIf="listadoCheckIn?.length>0; else aviso" [value]="listadoCheckIn" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">

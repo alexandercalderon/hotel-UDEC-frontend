@@ -8,7 +8,6 @@ import {AppRoutingModule} from './app-routing.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'es');
-import { InterceptorService } from './/loader/interceptor.service';
 
 // PrimeNG Components for demos
 import {AccordionModule} from 'primeng/accordion';
@@ -149,6 +148,7 @@ import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/ini
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { CreateCheckIn } from './ocupacion-checks/pages/check-in/create/create-check-in.component';
 
 @NgModule({
     imports: [
@@ -283,14 +283,14 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
         HabitacionesComponent,
         AppSaveCheckinComponent,
         AppSaveCheckoutComponent,
-        InicioCheckComponent
+        InicioCheckComponent,
+        CreateCheckIn
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, CheckService, MessageService,
-        {provide: LOCALE_ID ,useValue: 'es'},
-        {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+        {provide: LOCALE_ID ,useValue: 'es'}
     ],
     bootstrap: [AppComponent]
 })

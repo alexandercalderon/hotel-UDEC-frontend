@@ -30,6 +30,10 @@
   margin-top: 0;
 }
 
+h4::ng-deep{
+  color: aqua  !important;
+}
+
 .p-nogutter > .p-col,
 .p-nogutter > [class*=p-col-] {
   padding: 0;

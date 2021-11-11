@@ -3,8 +3,6 @@ import { CheckService } from '../check.service';
 import { ListCheckIn } from './list-check-in';
 import { MessageService } from "primeng/api";
 import swal from'sweetalert2';
-import { LoaderService } from '../../../../loader/loader.service';
-
 
 @Component({
   selector: 'app-inicio-check',
@@ -17,8 +15,7 @@ export class InicioCheckComponent implements OnInit {
   public listadoCheckIn: ListCheckIn[];
 
   constructor(private checkService: CheckService
-            , private mess: MessageService 
-            , public loaderService: LoaderService) { }
+            , private mess: MessageService ) { }
 
   ngOnInit(): void {
 

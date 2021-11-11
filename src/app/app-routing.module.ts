@@ -41,6 +41,7 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
 import {CheckOutComponent} from './ocupacion-checks/pages/check-out/check-out.component';
 import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
 import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
+import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/inicio-check.component';
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
                 children: [
                     {path: '', component: DashboardDemoComponent},
                     {path: 'ocupacion',component: OcupacionComponent},
-                    {path: 'check-in', component: CheckInComponent},
+                    {path: 'check-in', component: InicioCheckComponent},
+                    {path: 'check-in/detalle/:id', component: CheckInComponent},
                     {path: 'check-out', component: CheckOutComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},

@@ -1,10 +1,14 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID ,NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppRoutingModule} from './app-routing.module';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
+import { InterceptorService } from './/loader/interceptor.service';
 
 // PrimeNG Components for demos
 import {AccordionModule} from 'primeng/accordion';
@@ -96,6 +100,7 @@ import {AppLoginComponent} from './pages/app.login.component';
 import { CheckService } from './ocupacion-checks/pages/check-in/check.service';
 import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
 import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 // Demo pages
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
@@ -140,7 +145,10 @@ import { CheckOutComponent } from './ocupacion-checks/pages/check-out/check-out.
 import {EstadoComponent} from './ocupacion-checks/pages/components/estado/estado.component'
 import { HabitacionesComponent } from './ocupacion-checks/pages/components/habitaciones/habitaciones.component';
 import { MessageService } from 'primeng/api';
-import { HomeCheckInComponent } from './ocupacion-checks/pages/check-in/home/home-check-in/home-check-in.component';
+import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/inicio-check.component';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
     imports: [
@@ -215,7 +223,10 @@ import { HomeCheckInComponent } from './ocupacion-checks/pages/check-in/home/hom
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        AppCodeModule
+        AppCodeModule,
+        ProgressSpinnerModule,
+        MatProgressSpinnerModule,
+        MatProgressBarModule
     ],
     declarations: [
         AppComponent,
@@ -272,12 +283,14 @@ import { HomeCheckInComponent } from './ocupacion-checks/pages/check-in/home/hom
         HabitacionesComponent,
         AppSaveCheckinComponent,
         AppSaveCheckoutComponent,
-        HomeCheckInComponent,
+        InicioCheckComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, MenuService, CheckService, MessageService
+        PhotoService, ProductService, MenuService, CheckService, MessageService,
+        {provide: LOCALE_ID ,useValue: 'es'},
+        {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
     ],
     bootstrap: [AppComponent]
 })

@@ -94,8 +94,6 @@ import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
 import { CheckService } from './ocupacion-checks/pages/check-in/check.service';
-import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
-import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
 
 // Demo pages
 import {DashboardDemoComponent} from './demo/view/dashboarddemo.component';
@@ -269,8 +267,6 @@ import { MessageService } from 'primeng/api';
         CheckOutComponent,
         EstadoComponent,
         HabitacionesComponent,
-        AppSaveCheckinComponent,
-        AppSaveCheckoutComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

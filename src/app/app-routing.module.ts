@@ -39,8 +39,6 @@ import Component from '@fullcalendar/core/component/Component';
 import { OcupacionComponent } from './ocupacion-checks/pages/ocupacion/ocupacion.component';
 import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.component';
 import {CheckOutComponent} from './ocupacion-checks/pages/check-out/check-out.component';
-import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
-import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
 
 @NgModule({
     imports: [
@@ -87,8 +85,6 @@ import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
             {path: 'access', component: AppAccessdeniedComponent},
             {path: 'notfound', component: AppNotfoundComponent},
             {path: 'login', component: AppLoginComponent},
-            {path: 'savecheckin', component: AppSaveCheckinComponent},
-            {path: 'savecheckout', component: AppSaveCheckoutComponent},
             {path: '**', redirectTo: '/notfound'},
         ], {scrollPositionRestoration: 'enabled'})
     ],

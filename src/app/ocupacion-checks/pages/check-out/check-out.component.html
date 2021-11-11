@@ -5,38 +5,17 @@
     </body>
     <body class="subtitulos">
         <div class="p-field p-grid">
-            <label for="cedula" class="p-col-fixed" style="width: 100px"
-                >Cedula:</label
-            >
+            <label for="cedula" class="p-col-fixed" style="width: 100px">Cedula:</label>
             <div class="p-col">
                 <p-inputNumber
                     inputId="inputnumber"
                     [(ngModel)]="cedula"
                 ></p-inputNumber>
             </div>
-<<<<<<< HEAD
-            <div>
+            <div class="buttoncargar" id="botoncargar">
                 <button pButton pRipple type="button" icon="pi pi-times-circle" class="p-button-rounded p-button-danger" (click)="reset()"></button>
-                <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success" (click)="buscar()"></button>
+                <button (click)="buscar()" >Cargar</button>
             </div>
-=======
-            <button
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-times-circle"
-                class="p-button-rounded p-button-danger"
-                (click)="reset()"
-            ></button>
-            <button
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-search"
-                class="p-button-rounded p-button-success"
-                (click)="buscar()"
-            ></button>
->>>>>>> 7a9c5030f0a59dc049450934489a0df943acf1b7
         </div>
         <h2>Fechas de estadia</h2>
         <div class="p-fluid p-formgrid p-grid">
@@ -68,7 +47,7 @@
         </div>
         <h2>Datos del huesped</h2>
         <div class="p-field p-grid">
-            <label for="segundo nombre" class="p-col-fixed" style="width: 100px">identificacion</label>
+            <label for="segundo nombre" class="p-col-fixed" style="width: 100px">Cedula:</label>
             <div class="p-col">
                 <input
                     [(ngModel)]="checkOut.persona.identificacion"
@@ -189,6 +168,7 @@
                     pInputText
                     [(ngModel)]="numHabitacion"
                     placeholder="habitacion"
+                    style="height: 49px;"
                 />
             </div>
         </div>
@@ -215,11 +195,7 @@
                 </ng-template>
             </p-table>
         </div>
-<<<<<<< HEAD
         <h2>Adeudos</h2>
-        <button pButton pRipple type="button" label="agregar" class="p-button-rounded p-button-success"></button>
-=======
->>>>>>> 7a9c5030f0a59dc049450934489a0df943acf1b7
         <div class="card">
             <button
                 pButton
@@ -228,7 +204,6 @@
                 label="agregar"
                 (click)="addAdeudo()"
                 class="p-button-rounded p-button-success"
-                [disabled]="disabled"
             ></button>
             <button
                 pButton
@@ -237,10 +212,8 @@
                 label="calcular"
                 (click)="calcular()"
                 class="p-button-rounded p-button-warning"
-                [disabled]="disabled"
                 *ngIf="adeudos.length >= 1"
             ></button>
-            <h5>adeudos</h5>
             <p-table [value]="adeudos" dataKey="id" responsiveLayout="scroll">
                 <ng-template pTemplate="header">
                     <tr>
@@ -319,7 +292,7 @@
                 />
             </div>
             <div class="p-field p-col">
-                <label for="titular">tipo Pago:</label>
+                <label for="titular">Tipo pago:</label>
                 <input
                     [(ngModel)]="pago.tipoPago"
                     name="tipoPago"
@@ -335,7 +308,7 @@
                 />
             </div>
             <div class="p-field p-col">
-                <label for="monto">id transaccion:</label>
+                <label for="monto">Id transaccion:</label>
                 <input
                     [(ngModel)]="pago.idTransaccion"
                     name="fechaPago"
@@ -344,7 +317,7 @@
             </div>
         </div>
         <div class="buttoncancelar">
-            <button type="submit">Cancelar</button>
+            <button (click)="reset()" type="submit">Cancelar</button>
         </div>
         <div class="buttonguardar" id="botonguardar">
             <button (click)="guardar()" type="submit">Guardar</button>

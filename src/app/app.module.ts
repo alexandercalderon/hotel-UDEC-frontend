@@ -97,8 +97,6 @@ import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {AppLoginComponent} from './pages/app.login.component';
 import { CheckService } from './ocupacion-checks/pages/check-in/check.service';
-import {AppSaveCheckinComponent} from './pages/app.savecheckin.component';
-import {AppSaveCheckoutComponent} from './pages/app.savecheckout.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 // Demo pages
@@ -281,10 +279,8 @@ import { CreateCheckIn } from './ocupacion-checks/pages/check-in/create/create-c
         CheckOutComponent,
         EstadoComponent,
         HabitacionesComponent,
-        AppSaveCheckinComponent,
-        AppSaveCheckoutComponent,
-        InicioCheckComponent,
-        CreateCheckIn
+        CreateCheckIn,
+        InicioCheckComponent
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

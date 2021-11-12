@@ -2,15 +2,14 @@
     text-align: center;
 }
 .p-grid{
-    padding: 0.2rem 2rem;
-    width: auto;   
+    padding: 0.5rem 2rem;
+    width: auto;
 }
-
 .subtitulos{
     padding: 0rem 2rem;
-    margin: 0 auto;
+    margin: auto;
     width: 800px;
-    height: 2350px;
+    height: max-content;
     border: 3px solid rgb(162, 0, 255);
     border-radius: 1.5em;
     background: rgba(162, 0, 255, 0.2);
@@ -31,7 +30,7 @@ input,textarea {
     border: 1px solid #999;
     border-radius: 1.5em;
     margin-top: 0.9em;
-    vertical-align: top;
+    padding: 0 20px 0 20px;
 }
 button{
     width: 100px;
@@ -43,8 +42,7 @@ button{
     text-align: center;
     font-size: 16px;
     border-radius: 12px;
-    float: left;
-    margin: 10px;
+    margin-bottom: 10px;
 }
 button:hover {
     background-color: rgb(167, 114, 211);
@@ -52,10 +50,12 @@ button:hover {
 .buttoncancelar {
     position:relative;
     left: 30%;
+    display: inline-block;
 }
 .buttonguardar {
     position:relative;
     left: 40%;
+    display: inline-block;
 }
 .buttoncargar{
     position:relative;

@@ -44,8 +44,14 @@ export class CheckOutComponent implements OnInit {
             .then((data) => (this.products = data));
             this.reset();
     }
-
     buscar(): void {
+        if(this.cedula==null){
+            this.messageService.add({
+                severity: "error",
+                summary: "check out no encontrado",
+                detail: "el check out que intenta buscar no existe",
+            });
+        }
         this.checkOutService.find(this.cedula).subscribe((checkOut) => {
             if (checkOut != null) {
                 this.checkOut = checkOut;
@@ -56,16 +62,18 @@ export class CheckOutComponent implements OnInit {
                     this.checkOut.persona.genero = "Masculino";
                 if (this.checkOut.persona.genero == "F")
                     this.checkOut.persona.genero = "Femenino";
+                this.disabled=true;
             } else {
                 this.messageService.add({
                     severity: "error",
-                    summary: "check out no encontrado :(",
-                    detail: "el check out que intenta buscar, no existe",
+                    summary: "check out no encontrado",
+                    detail: "el check out que intenta buscar no existe",
                 });
             }
         });
     }
     reset(): void {
+        this.cedula = null;
         this.checkOut = {} as CheckOut;
         this.checkOut.persona = {} as Persona;
         this.checkOut.ventas = {} as Ventas;
@@ -74,7 +82,6 @@ export class CheckOutComponent implements OnInit {
         this.adeudos = [];
         this.habitacion = [];
     }
-
     findHabitacion(): void {
         this.checkOutService.findByHabitacion(this.numHabitacion).subscribe(
             (habitacion) => {
@@ -98,35 +105,48 @@ export class CheckOutComponent implements OnInit {
         this.adeudos.push(newAdeudo);
     }
     guardar(): void {
-        this.checkOutService.addPerson(this.checkOut.persona).subscribe(
-            (person) => {
-                this.checkOutService
-                    .addVenta(this.checkOut.ventas)
-                    .subscribe((venta) => {
-                        this.checkOutService
-                            .addPago(this.pago, venta.idVenta)
-                            .subscribe((ventaPagada) => {
-                                this.checkOutService.save(this.checkOut, person.idPersona, venta.idVenta).subscribe(check => {
-                                    this.habitacion.forEach(hab => {
-                                        this.checkOutService.AddHabitaciones(hab.idHabitacion, check.id).subscribe(); 
-                                    })
-                                    this.checkOutService.AddAdeudos(this.adeudos, check.id).subscribe(check => {
-                                        console.log(check);
-                                    })
+        if(this.cedula==null){
+            this.messageService.add({
+                severity: "error",
+                summary: "Error",
+                detail: "No se ha podido guardar, digite la cedula de nuevo",
+            });
+        }else{
+            this.checkOutService.addPerson(this.checkOut.persona).subscribe(
+                (person) => {
+                    this.checkOutService
+                        .addVenta(this.checkOut.ventas)
+                        .subscribe((venta) => {
+                            this.checkOutService
+                                .addPago(this.pago, venta.idVenta)
+                                .subscribe((ventaPagada) => {
+                                    this.checkOutService.save(this.checkOut, person.idPersona, venta.idVenta).subscribe(check => {
+                                        this.habitacion.forEach(hab => {
+                                            this.checkOutService.AddHabitaciones(hab.idHabitacion, check.id).subscribe(); 
+                                        })
+                                        this.checkOutService.AddAdeudos(this.adeudos, check.id).subscribe(check => {
+                                            console.log(check);
+                                        })
+                                    });
                                 });
-                            });
-                    });
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
+                        });
+                },
+                (err) => {
+                    console.log(err);
+                }
+            );
+            this.messageService.add({
+                severity: "success",
+                summary: "Guardado",
+                detail: "El check out se ha guardado correctamente",
+            });
+        }
     }
     calcular(): void {
         this.adeudos.forEach((adeudo) => {
             this.checkOut.ventas.totalVente +=
                 adeudo.precioUnitario * adeudo.importe;
         });
-        this.disabled = true;
+        this.disabled=true;
     }
 }

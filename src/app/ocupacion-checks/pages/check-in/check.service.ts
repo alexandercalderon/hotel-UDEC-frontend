@@ -10,6 +10,9 @@ import { ListCheckIn } from './home/list-check-in';
 import { formatDate } from '@angular/common';
 import { MessageService } from "primeng/api";
 import swal from'sweetalert2';
+import { SinglePersonDTO } from './create/single-person-dto';
+import { Habitacion } from './habitacion';
+import { NewCheckIn } from './create/new-check-in';
 
 @Injectable({
   providedIn: 'root'
@@ -81,4 +84,40 @@ export class CheckService {
         })
     )}
 
+
+    //Obtener persona=usuario
+    getPersona(identificador: number): Observable<SinglePersonDTO>{
+      return this.http.get<SinglePersonDTO>(`${this.urlEndPont}/get/persona/${identificador}`).pipe(
+        map( (response:any) =>{
+          return response.singlePersonDTO as SinglePersonDTO;
+        }),
+        catchError(e =>{
+          return throwError(e)
+        })
+      );
+    }
+
+
+    //Obtener habitacion
+    getHabitacion(numHabitacion: number): Observable<Habitacion>{
+      return this.http.get<Habitacion>(`${this.urlEndPont}/get/habitacion/${numHabitacion}`).pipe(
+        map( (response:any) =>{
+          return response.habitacionDTO as Habitacion;
+        }),
+        catchError(e =>{
+          return throwError(e);
+        })
+      );
+    }
+
+    createCheckIn(newCheckIn: NewCheckIn): Observable<any>{
+      return this.http.post<any>(`${this.urlEndPont}/save`,newCheckIn,{ headers: this.httpHeaders }).pipe(
+        map(response =>{
+           return response.mensaje as string; 
+        }),
+        catchError(e =>{
+          return throwError(e);
+        })
+      );
+    }
 }

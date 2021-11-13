@@ -7,6 +7,7 @@ import { CheckService } from '../check.service';
 import { MessageService } from "primeng/api";
 import { Router } from '@angular/router';
 import swal from'sweetalert2';
+import * as moment from 'moment';
 
 
 @Component({
@@ -26,6 +27,10 @@ export class CreateCheckIn implements OnInit {
 
     public cedulaBuscar: number;
     public numHabitBuscar: number;
+
+    public modificadorFecha1: boolean = false;
+    public modificadorFecha2:boolean = true;
+    public botonReset: boolean = true;
 
     constructor(private checkInService: CheckService
             ,   private mess: MessageService
@@ -55,6 +60,7 @@ export class CreateCheckIn implements OnInit {
                       });
                 }
                 if(err.status === 400){
+                    this.cedulaBuscar = null;
                     this.singlePerson = {} as SinglePersonDTO;
                     this.mess.add({
                         severity: "error",
@@ -83,6 +89,7 @@ export class CreateCheckIn implements OnInit {
                       });
                 }
                 if(err.status == 400){
+                    this.numHabitBuscar = null;
                     this.mess.add({
                         severity: "error",
                         summary: "Error de Peticion",
@@ -96,12 +103,17 @@ export class CreateCheckIn implements OnInit {
 
      crearCheckIn(): void{
         if(this.habitaciones.length > 0){
+
+            //Mapo
             this.newCheckIn.identificadorPersona = this.singlePerson.cedula;
             this.newCheckIn.habitaciones = this.habitaciones;
+
+            //Prueba
             console.log(this.newCheckIn);
             console.log(this.newCheckIn.fechaIngreso)
             console.log(this.newCheckIn.fechaSalida)
             console.log(this.newCheckIn.numeroDias)
+
             this.checkInService.createCheckIn(this.newCheckIn).subscribe(
                 mes =>{
                     this.router.navigate(['/check-in'])
@@ -142,6 +154,57 @@ export class CreateCheckIn implements OnInit {
               })
         }
  
+     }
+
+     reset(){
+        this.modificadorFecha1 = false;
+        this.modificadorFecha2 = true;
+        this.newCheckIn.fechaIngreso = null;
+        this.newCheckIn.fechaSalida = null;
+        this.newCheckIn.numeroDias = null;
+        this.botonReset = true;
+     }
+
+
+     visibilidad(): void{
+
+        if(this.newCheckIn.fechaIngreso && (!this.newCheckIn.fechaSalida)){
+            this.modificadorFecha2 = false;
+        }
+
+        if(this.newCheckIn.fechaIngreso && this.newCheckIn.fechaSalida){
+            let fecha1 = moment(this.newCheckIn.fechaIngreso);
+            let fecha2 = moment(this.newCheckIn.fechaSalida)
+            if(moment(fecha1).isBefore(fecha2)){
+                let diferenciaDias = fecha2.diff(fecha1, 'days');
+                let diferenciaMeses = fecha2.diff(fecha1, 'months');
+                let diferenciaAnios = fecha2.diff(fecha1, 'years');
+                if(diferenciaDias >= 0 && diferenciaMeses >=0 && diferenciaAnios >= 0){
+                    this.modificadorFecha1 = true;
+                    this.modificadorFecha2 = true;
+                    this.botonReset = false;
+                    this.newCheckIn.numeroDias = diferenciaDias;
+                }else{
+                    swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'No valido',
+                    })
+                }
+            }else{
+                this.newCheckIn.fechaIngreso = null;
+                this.newCheckIn.fechaSalida = null;
+                this.newCheckIn.numeroDias = null;
+                fecha1 = undefined;
+                fecha2 = undefined;
+                this.modificadorFecha2 = true;
+                swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'La Fecha de Salida no puede ser anterior a la Fecha de Entrada',
+                })
+            }
+        }
      }
 
 }

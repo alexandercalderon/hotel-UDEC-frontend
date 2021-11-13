@@ -9,19 +9,37 @@
 <h1>Crear Check-in</h1>
 
     <div class="card">
-        <h4>Fecha de Estadia</h4>
+        <div class="">
+            <h4>Fecha de Estadia</h4>
+        </div>
+
         <div class="p-fluid p-formgrid p-grid">
+    
                 <div class="p-field p-col">
                     <label for="calendar1">Fecha de Ingreso</label>
-                    <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaIngreso" placeholder="Año-Mes-Dia"></p-inputMask>
+                   <!--  <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaIngreso" placeholder="Año-Mes-Dia"></p-inputMask>-->
+                    <p-calendar inputId="basic" [(ngModel)]="newCheckIn.fechaIngreso"  dateFormat="yy-mm-dd"
+                    showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    [readonlyInput]="true" placeholder="Año-Mes-Dia"
+                    (ngModelChange)="visibilidad()" [disabled]="modificadorFecha1"></p-calendar>
                 </div>
                 <div class="p-field p-col">
                     <label for="calendar2">Fecha de Salida</label>
-                    <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaSalida" placeholder="Año-Mes-Dia"></p-inputMask>
+                    <!-- <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaSalida" placeholder="Año-Mes-Dia"></p-inputMask> -->
+                    <p-calendar inputId="basic" [(ngModel)]="newCheckIn.fechaSalida"  dateFormat="yy-mm-dd"
+                    showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    [readonlyInput]="true" placeholder="Año-Mes-Dia"
+                    (ngModelChange)="visibilidad()" [disabled]="modificadorFecha2"></p-calendar>
                 </div>
                 <div class="p-field p-col">
                     <label for="inputnumber">Numero de Dias</label>
-                    <p-inputNumber inputId="inputnumber" placeholder="N° Dias" [(ngModel)]="newCheckIn.numeroDias"></p-inputNumber>
+                    <p-inputNumber inputId="inputnumber" placeholder="N° Dias" [(ngModel)]="newCheckIn.numeroDias"
+                    [disabled]=true></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="" style="visibility: hidden;" >Algo</label>
+                    <p-button label="Refrescar" icon="pi pi-refresh" iconPos="right"
+                    (click)="reset()" [disabled]="botonReset"></p-button> 
                 </div>
         </div>
     </div>

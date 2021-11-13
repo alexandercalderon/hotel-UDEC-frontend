@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CalendarModule} from 'primeng/calendar';
 import { Habitacion } from '../habitacion';
 import {SinglePersonDTO} from './single-person-dto';
 import { NewCheckIn } from './new-check-in';

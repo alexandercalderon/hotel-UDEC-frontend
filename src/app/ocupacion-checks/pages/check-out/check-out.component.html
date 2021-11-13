@@ -5,7 +5,9 @@
     </body>
     <body class="subtitulos">
         <div class="p-field p-grid">
-            <label for="cedula" class="p-col-fixed" style="width: 100px">Cedula:</label>
+            <label for="cedula" class="p-col-fixed" style="width: 100px"
+                >Cedula:</label
+            >
             <div class="p-col">
                 <p-inputNumber
                     inputId="inputnumber"
@@ -13,8 +15,15 @@
                 ></p-inputNumber>
             </div>
             <div class="buttoncargar" id="botoncargar">
-                <button pButton pRipple type="button" icon="pi pi-times-circle" class="p-button-rounded p-button-danger" (click)="reset()"></button>
-                <button (click)="buscar()" >Cargar</button>
+                <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-times-circle"
+                    class="p-button-rounded p-button-danger"
+                    (click)="reset()"
+                ></button>
+                <button (click)="buscar()">Cargar</button>
             </div>
         </div>
         <h2>Fechas de estadia</h2>
@@ -45,14 +54,36 @@
                 />
             </div>
         </div>
-        <h2>Datos del huesped</h2>
         <div class="p-field p-grid">
-            <label for="segundo nombre" class="p-col-fixed" style="width: 100px">Cedula:</label>
+            <label
+                for="segundo nombre"
+                class="p-col-fixed"
+                style="width: 100px; font-size: larger"
+                >Buscar Usuario:</label
+            >
+            <p-inputNumber
+                inputId="inputnumber"
+                [(ngModel)]="usuario"
+            ></p-inputNumber>
+            <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-search"
+                class="p-button-rounded p-button-success"
+                (click)="findUser()"
+            ></button>
+        </div>
+        <div class="p-field p-grid">
+            <label for="segundo nombre" class="p-col-fixed" style="width: 100px"
+                >Cedula:</label
+            >
             <div class="p-col">
                 <input
                     [(ngModel)]="checkOut.persona.identificacion"
                     name="priNombre"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -65,6 +96,7 @@
                     [(ngModel)]="checkOut.persona.priNombre"
                     name="priNombre"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -77,6 +109,7 @@
                     [(ngModel)]="checkOut.persona.segNombre"
                     name="priNombre"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -89,6 +122,7 @@
                     name="apellido"
                     [(ngModel)]="checkOut.persona.priApellido"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -101,6 +135,7 @@
                     name="apellido"
                     [(ngModel)]="checkOut.persona.segApellido"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -113,6 +148,7 @@
                     [(ngModel)]="checkOut.persona.genero"
                     name="ciudad"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -125,6 +161,7 @@
                     [(ngModel)]="checkOut.persona.direccion"
                     name="direccion"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -137,6 +174,7 @@
                     [(ngModel)]="checkOut.persona.correo"
                     name="email"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -149,6 +187,7 @@
                     [(ngModel)]="checkOut.persona.telefono"
                     name="celular"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
@@ -161,14 +200,13 @@
                     pButton
                     pRipple
                     label="Buscar"
-                    *ngIf="numHabitacion != undefined && numHabitacion != ''"
                 ></button>
                 <input
                     type="text"
                     pInputText
                     [(ngModel)]="numHabitacion"
                     placeholder="habitacion"
-                    style="height: 49px;"
+                    style="height: 49px"
                 />
             </div>
         </div>

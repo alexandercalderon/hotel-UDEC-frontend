@@ -24,7 +24,7 @@ export class CheckOutService {
     return this.http.get<CheckOut>(this.endPoint+"/find/"+cedula);
   }
 
-  public findByHabitacion(numHabitacion: string): Observable<Habitaciones>{
+  public findByHabitacion(numHabitacion: number): Observable<Habitaciones>{
     return this.http.get<Habitaciones>(this.endPoint+"/habitacion/"+numHabitacion);
   }
 

@@ -84,7 +84,6 @@ export class CheckService {
         })
     )}
 
-
     //Obtener persona=usuario
     getPersona(identificador: number): Observable<SinglePersonDTO>{
       return this.http.get<SinglePersonDTO>(`${this.urlEndPont}/get/persona/${identificador}`).pipe(

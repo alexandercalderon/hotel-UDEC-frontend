@@ -41,6 +41,7 @@ import { CheckInComponent } from './ocupacion-checks/pages/check-in/check-in.com
 import {CheckOutComponent} from './ocupacion-checks/pages/check-out/check-out.component';
 import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/inicio-check.component';
 import {CreateCheckIn} from './ocupacion-checks/pages/check-in/create/create-check-in.component';
+import { AddCheckOutComponent } from './ocupacion-checks/pages/check-in/add-check-out/add-check-out.component';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import {CreateCheckIn} from './ocupacion-checks/pages/check-in/create/create-che
             {
                 path: '', component: AppMainComponent,
                 children: [
+                    {path: 'crear-check-out', component: AddCheckOutComponent},
                     {path: '', component: DashboardDemoComponent},
                     {path: 'ocupacion',component: OcupacionComponent},
                     {path: 'check-in', component: InicioCheckComponent},

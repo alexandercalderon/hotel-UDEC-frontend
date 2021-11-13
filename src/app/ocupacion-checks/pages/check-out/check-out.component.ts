@@ -22,11 +22,13 @@ export class CheckOutComponent implements OnInit {
 
     checkOut: CheckOut;
 
+    usuario: number;
+
     adeudos: Adeudo[] = [];
 
     habitacion: Habitaciones[] = [];
 
-    numHabitacion: string;
+    numHabitacion: number;
 
     disabled: boolean = false;
 
@@ -148,5 +150,8 @@ export class CheckOutComponent implements OnInit {
                 adeudo.precioUnitario * adeudo.importe;
         });
         this.disabled=true;
+    }
+    findUser(): void {
+
     }
 }

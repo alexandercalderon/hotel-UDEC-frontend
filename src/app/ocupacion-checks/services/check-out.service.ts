@@ -48,4 +48,9 @@ export class CheckOutService {
   public AddAdeudos(adeudos: Adeudo[], id:number): Observable<CheckOut>{
       return this.http.put<CheckOut>(this.endPoint+"/add-adeudos/"+id,adeudos,{headers:this.header});
   }
+
+  public findPerson(cedula: number): Observable<Persona>{
+    console.log(this.endPoint+"/findPerson/"+cedula)
+    return this.http.get<Persona>(this.endPoint+"/findPerson/"+cedula);
+  }
 }

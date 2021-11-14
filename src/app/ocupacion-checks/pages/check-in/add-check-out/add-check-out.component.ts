@@ -22,7 +22,10 @@ export class AddCheckOutComponent implements OnInit {
 
     numHabitacion: number;
 
-    constructor(private checkOutService: CheckOutService, private messageService:MessageService) {}
+    constructor(
+        private checkOutService: CheckOutService,
+        private messageService: MessageService
+    ) {}
 
     ngOnInit(): void {
         this.checkOut = {} as CheckOut;
@@ -47,10 +50,21 @@ export class AddCheckOutComponent implements OnInit {
             }
         );
     }
-    cargarPersona(cedula: number): void{
-
+    cargarPersona(cedula: number): void {
+        this.checkOutService.findPerson(cedula).subscribe(
+            (person) => {
+                this.persona = person;
+            },
+            (err) => {
+                if (err === 404) {
+                    this.messageService.add({
+                        severity: "error",
+                        summary: " persona no encontrada D:",
+                        detail: "la persona que está buscando, no existe",
+                    });
+                }
+            }
+        );
     }
-    crearCheckOut(): void{
-       
-    }
+    crearCheckOut(): void {}
 }

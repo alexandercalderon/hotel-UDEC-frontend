@@ -19,13 +19,14 @@
                     <label for="calendar1">Fecha de Ingreso</label>
                     <p-calendar inputId="basic" [(ngModel)]="checkOut.fechaIngreso"  dateFormat="yy-mm-dd"
                     showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    (ngModeChange)="diasEstadia()"
                     [readonlyInput]="true" placeholder="Año-Mes-Dia"></p-calendar>
                 </div>
                 <div class="p-field p-col">
                     <label for="calendar2">Fecha de Salida</label>
-                    <!-- <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaSalida" placeholder="Año-Mes-Dia"></p-inputMask> -->
                     <p-calendar inputId="basic" [(ngModel)]="checkOut.fechaEgreso"  dateFormat="yy-mm-dd"
                     showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    (ngModeChange)="diasEstadia()"
                     [readonlyInput]="true" placeholder="Año-Mes-Dia"></p-calendar>
                 </div>
                 <div class="p-field p-col">

@@ -147,7 +147,7 @@ import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/ini
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CreateCheckIn } from './ocupacion-checks/pages/check-in/create/create-check-in.component';
-import { AddCheckOutComponent } from './ocupacion-checks/pages/check-in/add-check-out/add-check-out.component';
+import { AddCheckOutComponent } from './ocupacion-checks/pages/check-out/add-check-out/add-check-out.component';
 
 @NgModule({
     imports: [

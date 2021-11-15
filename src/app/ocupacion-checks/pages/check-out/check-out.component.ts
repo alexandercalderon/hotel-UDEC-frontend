@@ -107,6 +107,7 @@ export class CheckOutComponent implements OnInit {
         this.adeudos.push(newAdeudo);
     }
     guardar(): void {
+        /*
         if(this.cedula==null){
             this.messageService.add({
                 severity: "error",
@@ -143,6 +144,7 @@ export class CheckOutComponent implements OnInit {
                 detail: "El check out se ha guardado correctamente",
             });
         }
+        */
     }
     calcular(): void {
         this.adeudos.forEach((adeudo) => {

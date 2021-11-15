@@ -29,6 +29,8 @@ export class AddCheckOutComponent implements OnInit {
 
     adeudos: Adeudo[] = [];
 
+    pago: Pago;
+
     constructor(
         private checkOutService: CheckOutService,
         private messageService: MessageService
@@ -38,8 +40,8 @@ export class AddCheckOutComponent implements OnInit {
         this.checkOut = {} as CheckOut;
         this.persona = {} as Persona;
         this.checkOut.ventas = {} as Ventas;
-        this.checkOut.ventas.pago = {} as Pago;
         this.checkOut.ventas.totalVente = 0;
+        this.pago = {} as Pago;
     }
 
     diasEstadia(): void {
@@ -98,8 +100,44 @@ export class AddCheckOutComponent implements OnInit {
         );
     }
     crearCheckOut(): void {
-        console.log(this.persona.identificacion)
-        if (this.habitaciones.length > 0 && this.persona.identificacion != null) {
+        if (
+            this.habitaciones.length > 0 &&
+            this.persona.identificacion != null
+        ) {
+            this.checkOutService
+                .addVenta(this.checkOut.ventas)
+                .subscribe((venta) => {
+                    this.checkOutService
+                        .addPago(this.pago, venta.idVenta)
+                        .subscribe((checkPagado) => {
+                            this.checkOutService
+                                .save(
+                                    this.checkOut,
+                                    this.persona.idPersona,
+                                    venta.idVenta
+                                )
+                                .subscribe((check) => {
+                                    const idHabitaciones =
+                                        this.habitaciones.map((habitacion) => {
+                                            return habitacion.numHabitacion;
+                                        });
+                                    this.checkOutService
+                                        .AddHabitaciones(
+                                            idHabitaciones,
+                                            check.id
+                                        )
+                                        .subscribe();
+                                    this.checkOutService
+                                        .AddAdeudos(this.adeudos, check.id)
+                                        .subscribe();
+                                    this.messageService.add({
+                                        severity: "success",
+                                        summary: " check out agregado :D",
+                                        detail: "el check out ha sido creado ",
+                                    });
+                                });
+                        });
+                });
         } else {
             this.messageService.add({
                 severity: "warn",

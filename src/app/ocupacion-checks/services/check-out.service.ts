@@ -27,10 +27,6 @@ export class CheckOutService {
   public findByHabitacion(numHabitacion: number): Observable<Habitaciones>{
     return this.http.get<Habitaciones>(this.endPoint+"/habitacion/"+numHabitacion);
   }
-
-  public addPerson(persona: Persona): Observable<Persona>{
-    return this.http.post<Persona>(this.endPoint+"/addPerson", persona, {headers: this.header});
-  }
   
   public addVenta(venta: Ventas): Observable<Ventas>{
     return this.http.post<Ventas>(this.endPoint+"/addVentas", venta, {headers: this.header});
@@ -42,8 +38,8 @@ export class CheckOutService {
   public save(checkOut: CheckOut, idPersona:number, idVenta: number): Observable<CheckOut>{
     return this.http.post<CheckOut>(this.endPoint+"/save/"+idVenta+"/"+idPersona, checkOut, {headers:this.header});
   }
-  public AddHabitaciones(idHabitacion:number, id:number): Observable<CheckOut>{
-    return this.http.put<CheckOut>(this.endPoint+"/add-habitaciones/"+id+"/"+idHabitacion,null,{headers: this.header});
+  public AddHabitaciones(idHabitaciones:number[], id:number): Observable<CheckOut>{
+    return this.http.put<CheckOut>(this.endPoint+"/add-habitaciones/"+id,idHabitaciones,{headers: this.header});
   }
   public AddAdeudos(adeudos: Adeudo[], id:number): Observable<CheckOut>{
       return this.http.put<CheckOut>(this.endPoint+"/add-adeudos/"+id,adeudos,{headers:this.header});

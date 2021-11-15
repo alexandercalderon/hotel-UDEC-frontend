@@ -322,11 +322,11 @@
             />
         </div>
         <div class="p-field p-col">
-            <label for="tipo pago">Tipo pago</label>
+            <label for="tipo pago">Fecha pago</label>
             <p-calendar
                 inputId="basic"
                 dateFormat="yy-mm-dd"
-                [(ngModel)]="checkOut.ventas.pago.tipoPago"
+                [(ngModel)]="pago.fechaPago"
                 showButtonBar="true"
                 yearRange="2000:2030"
                 [showIcon]="true"
@@ -335,9 +335,9 @@
             ></p-calendar>
         </div>
         <div class="p-field p-col">
-            <label for="fecha pago">Fecha Pago</label>
+            <label for="fecha pago">tipo Pago</label>
             <input
-                [(ngModel)]="checkOut.ventas.pago.fechaPago"
+                [(ngModel)]="pago.tipoPago"
                 id="direccion"
                 type="text"
                 pInputText
@@ -347,7 +347,7 @@
         <div class="p-field p-col">
             <label for="email">Id transaccion</label>
             <input
-                [(ngModel)]="checkOut.ventas.pago.idTransaccion"
+                [(ngModel)]="pago.idTransaccion"
                 id="email"
                 type="text"
                 pInputText

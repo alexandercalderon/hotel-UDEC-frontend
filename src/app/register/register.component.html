@@ -1,0 +1,188 @@
+<div id="formRegistro" class="p-col-12">
+    <h1>Registrate con Nosotros - Hotel UDEC</h1>
+    <div class="card">
+        <div class="p-fluid p-formgrid p-grid">
+            <form class="p-grid p-nogutters" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                <!-- Primer Nombre -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" name="nombre" [(ngModel)]="form.nombre" required minlength="3" maxlength="20" #nombre="ngModel" pInputText />
+                        <div *ngIf="f.submitted && nombre.invalid">
+                            <div *ngIf="nombre.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="nombre.errors.minlength">
+                                El Primer nombre debe tener al menos 3 caracteres
+                            </div>
+                            <div *ngIf="nombre.errors.maxlength">
+                                El Primer nombre debe tener como máximo 20 caracteres
+                            </div>
+                        </div>
+                        <label for="nombre">Primer Nombre</label>
+                    </span>
+                </div>
+                <!-- Segundo Nombre -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" name="segundoNombre" [(ngModel)]="form.segundoNombre" minlength="3" maxlength="20" #segundoNombre="ngModel" pInputText />
+                        <label for="segundoNombre">Segundo Nombre</label>
+                    </span>
+                </div>
+                <!-- Apellido -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" name="apellido" [(ngModel)]="form.apellido" required minlength="3" maxlength="20" #apellido="ngModel" pInputText />
+                        <div *ngIf="f.submitted && apellido.invalid">
+                            <div *ngIf="apellido.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="apellido.errors.minlength">
+                                El Primer apellido debe tener al menos 3 caracteres
+                            </div>
+                            <div *ngIf="apellido.errors.maxlength">
+                                El Primer apellido debe tener como máximo 20 caracteres
+                            </div>
+                        </div>
+                        <label for="apellido">Primer Apellido</label>
+                    </span>
+                </div>
+                <!-- Segundo Apellido -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" name="segundoApellido" [(ngModel)]="form.segundoApellido" minlength="3" maxlength="20" #segundoApellido="ngModel" pInputText />
+                        <label for="segundoApellido">Segundo Apellido</label>
+                    </span>
+                </div>
+                <!-- Identificacion -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="number" name="identificacion" [(ngModel)]="form.identificacion" required
+                        minlength="3" maxlength="20" #identificacion="ngModel" pInputText />
+                        <div *ngIf="f.submitted && identificacion.invalid">
+                            <div *ngIf="identificacion.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="identificacion.errors.maxlength">
+                                El número de Identificacion debe tener como máximo 10 caracteres
+                            </div>
+                        </div>
+                        <label for="identificacion">Nro de Identificación</label>
+                    </span>
+                </div>
+                <!-- Telefono -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="number" name="telefono" [(ngModel)]="form.telefono" required
+                        minlength="3" maxlength="20" #telefono="ngModel" pInputText />
+                        <div *ngIf="f.submitted && telefono.invalid">
+                            <div *ngIf="telefono.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="telefono.errors.maxlength">
+                                El número de telefono debe tener como máximo 12 caracteres
+                            </div>
+                        </div>
+                        <label for="telefono">Teléfono</label>
+                    </span>
+                </div>
+                <!-- Razon Social -->
+                <div class="p-field p-col-12">
+                    <span class="p-float-label">
+                        <input type="text" class="form-control" name="razonSocial" [(ngModel)]="form.razonSocial" required
+                        minlength="3" maxlength="20" #razonSocial="ngModel" pInputText />
+                        <div *ngIf="f.submitted && razonSocial.invalid">
+                            <div *ngIf="razonSocial.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="razonSocial.errors.minlength">
+                                La Razon Social debe contener al menos 1 caracter
+                            </div>
+                            <div *ngIf="razonSocial.errors.maxlength">
+                                La Razon Social solo puede contener máximo 150 caracteres
+                            </div>
+                        </div>
+                        <label for="razonSocial">Razon Social</label>
+                    </span>
+                </div>
+                <!-- Direccion -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" name="direccion" [(ngModel)]="form.direccion" required minlength="3" maxlength="20" #direccion="ngModel" pInputText />
+                        <div *ngIf="f.submitted && direccion.invalid">
+                            <div *ngIf="direccion.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="direccion.errors.minlength">
+                                La dirección debe contener al menos 10 caracteres
+                            </div>
+                            <div *ngIf="direccion.errors.maxlength">
+                                El Segundo nombre debe tener como máximo 50 caracteres
+                            </div>
+                        </div>
+                        <label for="direccion">Dirección</label>
+                    </span>
+                </div>
+                <!-- Usuario -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                        minlength="3" maxlength="20" #username="ngModel" pInputText />
+                        <div *ngIf="f.submitted && username.invalid">
+                            <div *ngIf="username.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="username.errors.minlength">
+                                El nombre de usuario debe tener al menos 3 caracteres
+                            </div>
+                            <div *ngIf="username.errors.maxlength">
+                                El nombre de usuario debe tener como máximo 20 caracteres
+                            </div>
+                        </div>
+                        <label for="username">Usuario</label>
+                    </span>
+                </div>
+                <!-- Correo -->
+                <div class="p-field p-col-12 p-md-6">
+                    <span class="p-float-label">
+                        <input type="email" name="email" [(ngModel)]="form.email" required email #email="ngModel" pInputText/>
+                        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                            <div *ngIf="email.errors.required">Este campo es obligatorio</div>
+                            <div *ngIf="email.errors.email">
+                                El correo electrónico debe ser una dirección de correo electrónico válida
+                            </div>
+                        </div>
+                        <label for="email">Correo Electrónico</label>
+                    </span>
+                </div>
+                <!-- Contraseña -->
+                <div class="p-field p-col-12">
+                    <span class="p-float-label">
+                        <input type="password" name="password" [(ngModel)]="form.password" required
+                        minlength="6" #password="ngModel" pInputText/>
+                        <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                            <div *ngIf="password.errors.required">La contraseña es obligatoria</div>
+                            <div *ngIf="password.errors.minlength">
+                                La contraseña debe tener al menos 6 caracteres
+                            </div>
+                        </div>
+                        <label for="password">Contraseña</label>
+                    </span>
+                </div>
+                <!--
+                <div class="p-field p-col-12 p-md-3">
+                    <span class="p-float-label">
+                        <p-dropdown inputid="genero" optionlabel="name" placeholder="Género" class="ng-tns-c2-0 ng-pristine ng-valid ng-touched" ng-reflect-placeholder="Género" ng-reflect-input-id="genero" ng-reflect-option-label="name">
+                            <div class="ng-tns-c2-0 p-dropdown p-component">
+                                <div class="p-hidden-accessible">
+                                    <input class="ng-tns-c2-0" aria-haspopup="listbox" readonly="" role="listbox" type="text" id="genero" aria-label="" aria-expanded="false">
+                                </div>
+                                <span class="ng-tns-c2-0 p-dropdown-label p-inputtext p-placeholder ng-star-inserted p-hidden-accessible">Genero</span>
+                                <div class="p-dropdown-trigger" aria-haspopup="listbox" role="button" aria-expanded="false">
+                                    <span class="p-dropdown-trigger-icon pi pi-chevron-down" ng-reflect-klass="p-dropdown-trigger-icon" ng-reflect-ng-class="pi pi-chevron-down"></span>
+                                </div>
+                            </div>
+                        </p-dropdown>
+                        <label for="genero p-hidden-accessible">Género</label>
+                    </span>
+                </div>-->
+                <div class="p-col-12 button-container">
+                    <button pButton label="Registrarme"></button>
+                </div>
+
+                <div class="p-col-12" *ngIf="f.submitted && isSignUpFailed">
+                    Falló el registro!<br />{{ errorMessage }}
+                </div>
+            </form>
+
+            <div class="p-col-12" *ngIf="isSuccessful">
+                Te has registrado exitosamente!
+            </div>
+        </div>
+    </div>
+</div>

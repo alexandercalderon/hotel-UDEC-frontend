@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {EventService} from '../demo/service/eventservice';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -21,10 +20,7 @@ export class AppCalendarComponent implements OnInit{
 
     clickedEvent = null;
 
-    constructor(private eventService: EventService) {}
-
     ngOnInit() {
-        this.eventService.getEvents().then(events => {this.events = events; });
         this.changedEvent = {title: '', start: null, end: '', allDay: null};
 
         this.options = {

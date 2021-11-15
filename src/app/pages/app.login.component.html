@@ -1,26 +1,51 @@
 <div class="login-body">
     <div class="login-panel p-fluid">
-        <div class="p-grid p-nogutter">
+        <div class="p-grid p-nogutters">
             <div class="p-col-12 login-header">
-                <h1>LOGIN</h1>
-                <h2>Welcome to Barcelona</h2>
-                <img src="assets/layout/images/logo.png">
+                <h1>Iniciar Sesión</h1>
+                <h2>Hotel - UDEC</h2>
             </div>
+        </div>
+        <form class="p-grid p-nogutters" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="p-col-12">
                 <span class="p-float-label">
-                    <input type="text" pInputText>
-                    <label>Username</label>
+                    <input type="text" name="username" [(ngModel)]="form.username" required
+                    #username="ngModel" pInputText/>
+                    <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                        El usuario es obligatorio!
+                    </div>
+                    <label for="username">Usuario</label>
                 </span>
             </div>
             <div class="p-col-12">
                 <span class="p-float-label">
-                    <input type="text" pInputText>
-                    <label>Password</label>
+                    <input type="password" name="password" [(ngModel)]="form.password" required
+                    minlength="6" #password="ngModel" pInputText />
+                    <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors.required">La contraseña es obligatoria</div>
+                        <div *ngIf="password.errors.minlength">
+                            La contraseña debe contener al menos 6 carácteres.
+                        </div>
+                    </div>
+                    <label for="password">Contraseña</label>
                 </span>
             </div>
             <div class="p-col-12 button-container">
-                <button pButton type="button" label="Sign In" icon="pi pi-user"></button>
+                <button pButton type="submit" label="Iniciar Sesión" icon="pi pi-user"></button>
             </div>
+            <div class="p-col-12 button-container">
+                <!-- <span class="">O</span> -->
+                <a href="/register" routerLink="/register" pButton label="Registrarte"></a>
+            </div>
+            <div class="p-col-12">
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                    Falla al iniciar sesión: {{ errorMessage }}
+                </div>
+            </div>
+        </form>
+
+        <div class="alert alert-success" *ngIf="isLoggedIn">
+            Iniciaste sesión como: {{ username }}.
         </div>
     </div>
 </div>

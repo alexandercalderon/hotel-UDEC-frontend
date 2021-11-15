@@ -1,0 +1,41 @@
+<div id="perfil" class="p-col-12" *ngIf="isLoggedIn">
+    <h1>Perfíl <span>{{ username }}</span></h1>
+    <div class="card">
+        <div class="p-fluid p-grid">
+            <div class="p-grid p-nogutters">
+                <div class="p-col-12 p-md-6">
+                    <h5>Nombres</h5>
+                    <p>{{ nombre }} {{ segundoNombre }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Apellidos</h5>
+                    <p>{{ apellido }} {{ segundoApellido }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Razón Social</h5>
+                    <p>{{ razonSocial }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Dirección</h5>
+                    <p>{{ direccion }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Teléfono</h5>
+                    <p>{{ telefono }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Correo</h5>
+                    <p>{{ email }}</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Género</h5>
+                    <p>Hombre</p>
+                </div>
+                <div class="p-col-12 p-md-6">
+                    <h5>Fecha de Cambio</h5>
+                    <p>10/11/2021</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

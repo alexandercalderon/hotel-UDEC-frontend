@@ -42,6 +42,7 @@ import {CheckOutComponent} from './ocupacion-checks/pages/check-out/check-out.co
 import { InicioCheckComponent } from './ocupacion-checks/pages/check-in/home/inicio-check.component';
 import {CreateCheckIn} from './ocupacion-checks/pages/check-in/create/create-check-in.component';
 import { AddCheckOutComponent } from './ocupacion-checks/pages/check-out/add-check-out/add-check-out.component';
+import { HomeComponent } from './ocupacion-checks/pages/check-out/home/home.component';
 
 @NgModule({
     imports: [
@@ -49,13 +50,13 @@ import { AddCheckOutComponent } from './ocupacion-checks/pages/check-out/add-che
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: 'crear-check-out', component: AddCheckOutComponent},
                     {path: '', component: DashboardDemoComponent},
                     {path: 'ocupacion',component: OcupacionComponent},
                     {path: 'check-in', component: InicioCheckComponent},
                     {path: 'check-in/detalle/:id', component: CheckInComponent},
                     {path: 'check-in/create', component: CreateCheckIn},
-                    {path: 'check-out', component: CheckOutComponent},
+                    {path: 'check-out', component: HomeComponent},
+                    {path: 'check-out/create', component: AddCheckOutComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},

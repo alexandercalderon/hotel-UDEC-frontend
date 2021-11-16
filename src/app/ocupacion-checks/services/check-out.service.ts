@@ -49,4 +49,11 @@ export class CheckOutService {
     console.log(this.endPoint+"/findPerson/"+cedula)
     return this.http.get<Persona>(this.endPoint+"/findPerson/"+cedula);
   }
+
+  public list(): Observable<CheckOut[]>{
+    return this.http.get<CheckOut[]>(this.endPoint+"/list");
+  }
+  public delete(id: number): Observable<void>{
+    return this.http.delete<void>(this.endPoint+"/delete/"+id);
+  }
 }

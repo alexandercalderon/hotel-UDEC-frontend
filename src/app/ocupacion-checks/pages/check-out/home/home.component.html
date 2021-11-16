@@ -1,0 +1,37 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<button pButton pRipple routerLink="/check-out/create" class="p-button-info" label="Crear Check-Out" icon="pi pi-plus-circle" iconPos="left"></button>
+<p-toast ></p-toast>
+<div class="card">
+    <h1>Listado de Check-Out</h1>
+    <p-table *ngIf="checks.length>0; else aviso" [value]="checks" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Num. Dias</th>
+                <th>Fecha Ingreso</th>
+                <th>Fecha Salida</th>
+                <th>Opciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-checks>
+            <tr>
+                <td>{{checks.id}}</td>
+                <td>{{checks.numeroDias}}</td>
+                <td>{{checks.fechaIngreso}}</td>
+                <td>{{checks.fechaEgreso}}</td>
+                <td>
+                    <button pButton pRipple routerLink="/check-in/detalle" icon="pi pi-search" class="p-button-rounded p-button-success p-mr-2" 
+                    [routerLink]="['/check-in/detalle',checks.id]"></button>
+                    <button pButton pRipple icon="pi pi-file-pdf" class="p-button-rounded p-button-info p-mr-2"></button>
+                    <button pButton pRipple (click)="eliminar(checks.id)" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template #aviso>
+        <div class="card bg-color-hab">
+            No hay check outs 
+        </div>
+    </ng-template>
+</div>

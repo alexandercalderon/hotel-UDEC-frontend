@@ -37,11 +37,7 @@ export class AddCheckOutComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.checkOut = {} as CheckOut;
-        this.persona = {} as Persona;
-        this.checkOut.ventas = {} as Ventas;
-        this.checkOut.ventas.totalVente = 0;
-        this.pago = {} as Pago;
+        this.reset();
     }
 
     diasEstadia(): void {
@@ -135,6 +131,7 @@ export class AddCheckOutComponent implements OnInit {
                                         summary: " check out agregado :D",
                                         detail: "el check out ha sido creado ",
                                     });
+                                    this.reset();
                                 });
                         });
                 });
@@ -156,5 +153,14 @@ export class AddCheckOutComponent implements OnInit {
                 adeudo.precioUnitario * adeudo.importe;
         });
         this.calculado = true;
+    }
+    reset(): void {
+        this.checkOut = {} as CheckOut;
+        this.persona = {} as Persona;
+        this.checkOut.ventas = {} as Ventas;
+        this.checkOut.ventas.totalVente = 0;
+        this.pago = {} as Pago;
+        this.adeudos = [];
+        this.habitaciones = [];
     }
 }

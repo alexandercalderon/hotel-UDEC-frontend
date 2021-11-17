@@ -119,4 +119,16 @@ export class CheckService {
         })
       );
     }
+
+    updateCheckIn(newCheckIn: NewCheckIn, id:number): Observable<any>{
+      return this.http.put<any>(`${this.urlEndPont}/update/${id}`, newCheckIn, {headers: this.httpHeaders})
+      .pipe(
+        map( response => {
+          return response.mensaje as string;
+        }),
+        catchError(e => {
+          return throwError(e);
+        })
+      )
+    }
 }

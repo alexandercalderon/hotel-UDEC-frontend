@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { TimeGridSlicer } from "@fullcalendar/timegrid";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { CheckOut } from "src/app/ocupacion-checks/interfaces/check-out";
 import { CheckOutService } from "src/app/ocupacion-checks/services/check-out.service";
-
 @Component({
     selector: "app-home",
     templateUrl: "./home.component.html",
@@ -44,4 +42,5 @@ export class HomeComponent implements OnInit {
             this.checks = checkOuts;
         });
     }
+    
 }

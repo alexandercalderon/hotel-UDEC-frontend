@@ -20,9 +20,7 @@ export class CheckOutService {
 
   constructor(private http: HttpClient) { }
 
-  public find(cedula: number): Observable<CheckOut>{
-    return this.http.get<CheckOut>(this.endPoint+"/find/"+cedula);
-  }
+ 
 
   public findByHabitacion(numHabitacion: number): Observable<Habitaciones>{
     return this.http.get<Habitaciones>(this.endPoint+"/habitacion/"+numHabitacion);
@@ -55,5 +53,9 @@ export class CheckOutService {
   }
   public delete(id: number): Observable<void>{
     return this.http.delete<void>(this.endPoint+"/delete/"+id);
+  }
+
+  public findCheck(id: number): Observable<CheckOut>{
+    return this.http.get<CheckOut>(this.endPoint+"/find-check/"+id);
   }
 }

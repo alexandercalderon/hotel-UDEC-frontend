@@ -22,8 +22,8 @@
                 <td>{{checks.fechaEgreso}}</td>
                 <td>
                     <button pButton pRipple routerLink="/check-in/detalle" icon="pi pi-search" class="p-button-rounded p-button-success p-mr-2" 
-                    [routerLink]="['/check-in/detalle',checks.id]"></button>
-                    <button pButton pRipple icon="pi pi-file-pdf" class="p-button-rounded p-button-info p-mr-2"></button>
+                    [routerLink]="['/check-out/detalle',checks.id]"></button>
+                    <button pButton pRipple icon="pi pi-file-pdf" class="p-button-rounded p-button-info p-mr-2" (click)="descargar(checks.id)"></button>
                     <button pButton pRipple (click)="eliminar(checks.id)" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                 </td>
             </tr>

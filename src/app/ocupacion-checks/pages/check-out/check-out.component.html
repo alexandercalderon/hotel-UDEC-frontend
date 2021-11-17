@@ -1,31 +1,36 @@
 <p-toast></p-toast>
-<html>
-    <body class="titulo">
+<div class="p-d-flex">
+    <div class="p-fluid">
+        <button
+            pButton
+            pRipple
+            type="button"
+            label="Regresar"
+            icon="pi pi-arrow-circle-left"
+            iconPos="left"
+            routerLink="/check-out"
+            class="p-button-info"
+        ></button>
+    </div>
+    <div class="p-fluid">
+        <button
+            pButton
+            pRipple
+            type="button"
+            label="descargar"
+            icon="pi pi-file-pdf"
+            iconPos="left"
+            class="p-button-info"
+            (click)="descargar(checkOut.id)"
+        ></button>
+    </div>
+</div>
+<html id="descarga">
+    <div >
+    <body class="titulo"> 
         <h1>CHECK-OUT</h1>
     </body>
     <body class="subtitulos">
-        <div class="p-field p-grid">
-            <label for="cedula" class="p-col-fixed" style="width: 100px"
-                >Cedula:</label
-            >
-            <div class="p-col">
-                <p-inputNumber
-                    inputId="inputnumber"
-                    [(ngModel)]="cedula"
-                ></p-inputNumber>
-            </div>
-            <div class="buttoncargar" id="botoncargar">
-                <button
-                    pButton
-                    pRipple
-                    type="button"
-                    icon="pi pi-times-circle"
-                    class="p-button-rounded p-button-danger"
-                    (click)="reset()"
-                ></button>
-                <button (click)="buscar()">Cargar</button>
-            </div>
-        </div>
         <h2>Fechas de estadia</h2>
         <div class="p-fluid p-formgrid p-grid">
             <div class="p-field p-col">
@@ -34,6 +39,7 @@
                     name="fechadeingreso"
                     [(ngModel)]="checkOut.fechaIngreso"
                     type="text"
+                    disabled
                 />
             </div>
             <div class="p-field p-col">
@@ -42,6 +48,7 @@
                     name="diashospedados"
                     [(ngModel)]="checkOut.numeroDias"
                     type="text"
+                    disabled
                 />
             </div>
             <div class="p-field p-col">
@@ -51,29 +58,11 @@
                     [(ngModel)]="checkOut.fechaEgreso"
                     name="fechadeegreso"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
-        <div class="p-field p-grid">
-            <label
-                for="segundo nombre"
-                class="p-col-fixed"
-                style="width: 100px; font-size: larger"
-                >Buscar Usuario:</label
-            >
-            <p-inputNumber
-                inputId="inputnumber"
-                [(ngModel)]="usuario"
-            ></p-inputNumber>
-            <button
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-search"
-                class="p-button-rounded p-button-success"
-                (click)="findUser()"
-            ></button>
-        </div>
+        <h2>Fechas de estadia</h2>
         <div class="p-field p-grid">
             <label for="segundo nombre" class="p-col-fixed" style="width: 100px"
                 >Cedula:</label
@@ -192,26 +181,8 @@
             </div>
         </div>
         <h2>Datos de la reservacion</h2>
-        <div class="p-col-12 p-md-4">
-            <div class="p-inputgroup">
-                <button
-                    type="button"
-                    (click)="findHabitacion()"
-                    pButton
-                    pRipple
-                    label="Buscar"
-                ></button>
-                <input
-                    type="text"
-                    pInputText
-                    [(ngModel)]="numHabitacion"
-                    placeholder="habitacion"
-                    style="height: 49px"
-                />
-            </div>
-        </div>
         <div class="card">
-            <p-table responsiveLayout="scroll" [value]="habitacion">
+            <p-table responsiveLayout="scroll" [value]="checkOut.habitacion">
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th>Numero de habitacion</th>
@@ -235,76 +206,20 @@
         </div>
         <h2>Adeudos</h2>
         <div class="card">
-            <button
-                pButton
-                pRipple
-                type="button"
-                label="agregar"
-                (click)="addAdeudo()"
-                class="p-button-rounded p-button-success"
-            ></button>
-            <button
-                pButton
-                pRipple
-                type="button"
-                label="calcular"
-                (click)="calcular()"
-                class="p-button-rounded p-button-warning"
-                *ngIf="adeudos.length >= 1"
-            ></button>
-            <p-table [value]="adeudos" dataKey="id" responsiveLayout="scroll">
-                <ng-template pTemplate="header">
+            <p-table responsiveLayout="scroll" [value]="checkOut.adeudos">
+                <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th>servicio</th>
                         <th>precio unitario</th>
                         <th>importe</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-adeudo>
+                <ng-template pTemplate="body" let-product let-columns="columns">
                     <tr>
-                        <td pEditableColumn>
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input
-                                        pInputText
-                                        type="text"
-                                        [(ngModel)]="adeudo.servicioHabitacion"
-                                    />
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{ adeudo.servicioHabitacion }}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td pEditableColumn>
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input
-                                        pInputText
-                                        type="text"
-                                        [(ngModel)]="adeudo.precioUnitario"
-                                        required
-                                    />
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{
-                                        adeudo.precioUnitario | currency: "USD"
-                                    }}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td pEditableColumn>
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input
-                                        pInputText
-                                        [(ngModel)]="adeudo.importe"
-                                    />
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{ adeudo.importe }}
-                                </ng-template>
-                            </p-cellEditor>
+                        <td>{{ product.servicioHabitacion }}</td>
+                        <td>{{ product.precioUnitario | currency: "USD" }}</td>
+                        <td>
+                            {{ product.importe }}
                         </td>
                     </tr>
                 </ng-template>
@@ -318,6 +233,7 @@
                     [(ngModel)]="checkOut.ventas.fecVenta"
                     name="fechaVenta"
                     type="text"
+                    disabled
                 />
             </div>
             <div class="p-field p-col">
@@ -332,33 +248,31 @@
             <div class="p-field p-col">
                 <label for="titular">Tipo pago:</label>
                 <input
-                    [(ngModel)]="pago.tipoPago"
+                    [(ngModel)]="checkOut.ventas.pago.tipoPago"
                     name="tipoPago"
                     type="text"
+                    disabled
                 />
             </div>
             <div class="p-field p-col">
                 <label for="monto">Fecha pago:</label>
                 <input
-                    [(ngModel)]="pago.fechaPago"
+                    [(ngModel)]="checkOut.ventas.pago.fechaPago"
                     name="fechaPago"
                     type="text"
+                    disabled
                 />
             </div>
             <div class="p-field p-col">
                 <label for="monto">Id transaccion:</label>
                 <input
-                    [(ngModel)]="pago.idTransaccion"
+                    [(ngModel)]="checkOut.ventas.pago.idTransaccion"
                     name="fechaPago"
                     type="text"
+                    disabled
                 />
             </div>
         </div>
-        <div class="buttoncancelar">
-            <button (click)="reset()" type="submit">Cancelar</button>
-        </div>
-        <div class="buttonguardar" id="botonguardar">
-            <button (click)="guardar()" type="submit">Guardar</button>
-        </div>
     </body>
+    </div>
 </html>

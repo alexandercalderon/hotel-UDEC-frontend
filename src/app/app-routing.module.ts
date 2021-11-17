@@ -56,6 +56,7 @@ import { HomeComponent } from './ocupacion-checks/pages/check-out/home/home.comp
                     {path: 'check-in/detalle/:id', component: CheckInComponent},
                     {path: 'check-in/create', component: CreateCheckIn},
                     {path: 'check-out', component: HomeComponent},
+                    {path: 'check-out/detalle/:id', component: CheckOutComponent},
                     {path: 'check-out/create', component: AddCheckOutComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},

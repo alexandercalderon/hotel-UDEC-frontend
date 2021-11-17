@@ -7,7 +7,6 @@ import {ProductService} from '../../../demo/service/productservice';
 import { Usuario } from './usuario';
 import { Habitacion } from './habitacion';
 import { MessageService } from "primeng/api";
-import {ToastModule} from 'primeng/toast';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from'sweetalert2';
 

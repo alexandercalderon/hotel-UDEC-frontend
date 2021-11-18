@@ -144,6 +144,7 @@ import { EstadoComponent } from "./ocupacion-checks/pages/components/estado/esta
 import { HabitacionesComponent } from "./ocupacion-checks/pages/components/habitaciones/habitaciones.component";
 import { MessageService } from "primeng/api";
 import { InicioCheckComponent } from "./ocupacion-checks/pages/check-in/home/inicio-check.component";
+import { UpdateCheckIn } from './ocupacion-checks/pages/check-in/update/update-check-in.component';
 
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
@@ -286,6 +287,7 @@ import { HomeComponent } from "./ocupacion-checks/pages/check-out/home/home.comp
         InicioCheckComponent,
         AddCheckOutComponent,
         HomeComponent,
+        UpdateCheckIn
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

@@ -1,0 +1,138 @@
+<p-toast ></p-toast>
+<h1>Actualizar Check-in</h1>
+
+    <div class="card">
+        <div class="">
+            <h4>Fecha de Estadia</h4>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+    
+                <div class="p-field p-col">
+                    <label for="calendar1">Fecha de Ingreso</label>
+                   <!--  <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaIngreso" placeholder="Año-Mes-Dia"></p-inputMask>-->
+                    <p-calendar inputId="basic" [(ngModel)]="newCheckIn.fechaIngreso"  dateFormat="yy-mm-dd"
+                    showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    [readonlyInput]="true" placeholder="Año-Mes-Dia"
+                    (ngModelChange)="visibilidad()" [disabled]="modificadorFecha1"></p-calendar>
+                </div>
+                <div class="p-field p-col">
+                    <label for="calendar2">Fecha de Salida</label>
+                    <!-- <p-inputMask mask="9999-99-99" [(ngModel)]="newCheckIn.fechaSalida" placeholder="Año-Mes-Dia"></p-inputMask> -->
+                    <p-calendar inputId="basic" [(ngModel)]="newCheckIn.fechaSalida"  dateFormat="yy-mm-dd"
+                    showButtonBar="true" yearRange="2000:2030" [showIcon]="true"
+                    [readonlyInput]="true" placeholder="Año-Mes-Dia"
+                    (ngModelChange)="visibilidad()" [disabled]="modificadorFecha2"></p-calendar>
+                </div>
+                <div class="p-field p-col">
+                    <label for="inputnumber">Numero de Dias</label>
+                    <p-inputNumber inputId="inputnumber" placeholder="N° Dias" [(ngModel)]="newCheckIn.numeroDias"
+                    [disabled]=true></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="" style="visibility: hidden;" >Algo</label>
+                    <p-button label="Refrescar" icon="pi pi-refresh" iconPos="right"
+                    (click)="reset()"></p-button> 
+                </div>
+        </div>
+    </div>
+   
+    <div class="card">
+        <h4>Datos del Huesped</h4>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="cedulaId">Cedula</label>
+            <div class="p-formgroup-inline">
+                <div class="p-field">
+                    <span class="p-float-label p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input minlength="1" [(ngModel)]="cedulaBuscar" id="cedulaId" type="number" pInputText placeholder="Cedula">
+                    </span> 
+                </div>
+                <div>
+                    <button pButton pRipple type="button" label="Buscar" 
+                    class="p-button-raised p-button-warning"
+                    (click)="cargarPersona(cedulaBuscar)"></button>
+                </div>
+            </div>
+        </div>
+            <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col">
+                    <label for="cedula">Cedula</label>
+                    <input [(ngModel)]="singlePerson.cedula" id="cedula" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="nombre">Nombre</label>
+                    <input [(ngModel)]="singlePerson.nombre" id="nombre" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="apellido">Apellido</label>
+                    <input [(ngModel)]="singlePerson.apellido" id="apellido" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="direccion">Direccion</label>
+                    <input [(ngModel)]="singlePerson.direccion" id="direccion" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="email">Email</label>
+                    <input [(ngModel)]="singlePerson.email" id="email" type="text" pInputText disabled required> 
+                </div>
+                <div class="p-field p-col">
+                    <label for="telefono">Telefono</label>
+                    <input [(ngModel)]="singlePerson.telefono" id="telefono" type="text" pInputText disabled required> 
+                </div>
+            </div>
+        
+    </div>
+
+    <div class="card">
+        <h4>Datos de la Reservación</h4>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="cedulaId">Habitacion</label>
+            <div class="p-formgroup-inline">
+                <div class="p-field">
+                    <span class="p-float-label p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input [(ngModel)]="numHabitBuscar" id="cedulaId" type="number" pInputText placeholder="Habitacion">
+                    </span> 
+                </div>
+                <div>
+                    <button pButton pRipple type="button" label="Buscar" 
+                    class="p-button-raised p-button-warning" 
+                    (click)="cargarHabitacion(numHabitBuscar)"></button>
+                </div>
+            </div>
+        </div>
+        <p-table [value]="habitaciones" responsiveLayout="scroll" 
+        *ngIf="habitaciones?.length>0; else aviso">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>Numero de Habitación</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                    <th>Eliminar</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-habitaciones let-columns="columns">
+                <tr>
+                    <td>{{habitaciones.numeroHabitacion}}</td>
+                    <td>{{habitaciones.tipo}}</td>
+                    <td>{{habitaciones.tarifa | currency:'USD'}}</td>
+                    <td >
+                        <button pButton icon="pi pi-times" class="p-button-danger"
+                        (click)="removeHabitacion(habitaciones)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <ng-template #aviso>
+            <div class="card bg-color-hab">
+                No hay habitaciones
+            </div>
+        </ng-template>
+    </div>
+    <div style="float: right;">
+        <button styleClass="p-button-lg" pButton pRipple type="button" label="Actualizar Check-In" class="p-button-raised p-button-danger"
+        icon="pi pi-search" iconPos="right" (click)="updateCheckIn()"></button>
+    </div>
+
+

@@ -33,12 +33,15 @@ export class CreateCheckIn implements OnInit {
 
     constructor(private checkInService: CheckService
             ,   private mess: MessageService
-            ,   private router: Router) { }sww
+            ,   private router: Router) { }
 
     ngOnInit() {
         this.habitaciones = [] as Habitacion[];
         this.singlePerson = {} as SinglePersonDTO;
         this.newCheckIn = {} as NewCheckIn;
+        this.modificadorFecha1 = true;
+        this.modificadorFecha2 = true;
+        this.botonReset = true;
      }
 
 
@@ -74,9 +77,18 @@ export class CreateCheckIn implements OnInit {
      cargarHabitacion(numHabitacion: number): void{
          this.checkInService.getHabitacion(numHabitacion).subscribe(
              h =>{
-                this.habitaciones.push(h);
-                this.habitaciones = this.habitaciones.filter( h => (h !== null));
-                this.numHabitBuscar = null;
+                let hab = this.habitaciones.find(function (ele) { return ele.numeroHabitacion === h.numeroHabitacion; });
+                if(!hab){
+                    this.habitaciones.push(h);
+                    this.habitaciones = this.habitaciones.filter( h => (h !== null));
+                    this.numHabitBuscar = null;
+                }else{
+                    this.numHabitBuscar = null;
+                    this.mess.add({
+                        severity: "error",
+                        summary: "Esta habitación ya esta agregada",
+                      });
+                }
              },
              err =>{
                 if(err.status == 404){

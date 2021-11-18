@@ -23,7 +23,8 @@
                 <td>
                     <button pButton pRipple routerLink="/check-in/detalle" icon="pi pi-search" class="p-button-rounded p-button-success p-mr-2" 
                     [routerLink]="['/check-in/detalle',listadoCheckIn.id]"></button>
-                    <button pButton pRipple icon="pi pi-cog" class="p-button-rounded p-button-info p-mr-2"></button>
+                    <button pButton pRipple icon="pi pi-cog" class="p-button-rounded p-button-info p-mr-2"
+                    [routerLink]="['/check-in/update', listadoCheckIn.id]"></button>
                     <button pButton pRipple (click)="eliminar(listadoCheckIn)" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                 </td>
             </tr>
@@ -31,7 +32,7 @@
     </p-table>
     <ng-template #aviso>
         <div class="card bg-color-hab">
-            No hay habitaciones
+            No hay Check-Ins
         </div>
     </ng-template>
 </div>

@@ -1,5 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { Adeudo } from "src/app/ocupacion-checks/interfaces/adeudo";
 import { CheckOut } from "src/app/ocupacion-checks/interfaces/check-out";
@@ -33,11 +34,28 @@ export class AddCheckOutComponent implements OnInit {
 
     constructor(
         private checkOutService: CheckOutService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
         this.reset();
+        this.route.paramMap.subscribe((params) => {
+            const id: number = Number(params.get("id"));
+            if (id)
+                this.checkOutService.findCheck(id).subscribe((check) => {
+                    let resta = 0;
+                    this.checkOut = check;
+                    console.log(this.checkOut.id);
+                    this.persona = check.persona;
+                    this.habitaciones = check.habitacion;
+                    this.adeudos = check.adeudos;
+                    this.adeudos.forEach((adeudo) => {
+                        resta += adeudo.precioUnitario * adeudo.importe;
+                    });
+                    this.checkOut.ventas.totalVente -= resta;
+                });
+        });
     }
 
     diasEstadia(): void {
@@ -142,6 +160,15 @@ export class AddCheckOutComponent implements OnInit {
                 detail: "debes completar todo el fotmato para poder crear el check out",
             });
         }
+    }
+    edit(): void {
+        this.checkOut.habitacion = this.habitaciones;
+        this.checkOut.adeudos = this.adeudos;
+        console.log(this.checkOut)
+
+        /*this.checkOutService.edit(this.checkOut).subscribe(check => {
+            console.log(check);
+        })*/
     }
     agregarAdeudo(): void {
         const newAdeudo = {} as Adeudo;

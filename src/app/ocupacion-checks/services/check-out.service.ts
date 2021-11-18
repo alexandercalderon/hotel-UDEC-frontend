@@ -58,4 +58,8 @@ export class CheckOutService {
   public findCheck(id: number): Observable<CheckOut>{
     return this.http.get<CheckOut>(this.endPoint+"/find-check/"+id);
   }
+
+  public edit(checkOut: CheckOut): Observable<CheckOut>{
+    return this.http.put<CheckOut>(this.endPoint+"/update/"+checkOut.id,checkOut,{headers: this.header});
+  }
 }

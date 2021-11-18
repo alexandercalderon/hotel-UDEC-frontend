@@ -362,10 +362,11 @@
         pButton
         pRipple
         type="button"
-        label="Crear Check-In"
+        label="{{checkOut.id ? 'editar' : 'crear'}}"
         class="p-button-raised p-button-success"
-        icon="pi pi-search"
+        icon="{{checkOut.id ? 'pi pi-pencil': 'pi pi-search'}}"
         iconPos="right"
-        (click)="crearCheckOut()"
-    ></button>
+        (click)="checkOut.id ? edit() : crearCheckOut()"
+    >
+    </button>
 </div>

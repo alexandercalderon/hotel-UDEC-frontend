@@ -54,6 +54,7 @@ export class AddCheckOutComponent implements OnInit {
                         resta += adeudo.precioUnitario * adeudo.importe;
                     });
                     this.checkOut.ventas.totalVente -= resta;
+                    this.pago = check.ventas.pago;
                 });
         });
     }
@@ -164,11 +165,15 @@ export class AddCheckOutComponent implements OnInit {
     edit(): void {
         this.checkOut.habitacion = this.habitaciones;
         this.checkOut.adeudos = this.adeudos;
-        console.log(this.checkOut)
 
-        /*this.checkOutService.edit(this.checkOut).subscribe(check => {
-            console.log(check);
-        })*/
+        this.checkOutService.edit(this.checkOut).subscribe((check) => {
+            this.messageService.add({
+                severity: "success",
+                summary: " check out agregado :D",
+                detail: "el check out ha sido creado ",
+            });
+            this.reset();
+        });
     }
     agregarAdeudo(): void {
         const newAdeudo = {} as Adeudo;

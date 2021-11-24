@@ -39,7 +39,7 @@ export class CreateCheckIn implements OnInit {
         this.habitaciones = [] as Habitacion[];
         this.singlePerson = {} as SinglePersonDTO;
         this.newCheckIn = {} as NewCheckIn;
-        this.modificadorFecha1 = true;
+        this.modificadorFecha1 = false;
         this.modificadorFecha2 = true;
         this.botonReset = true;
      }
